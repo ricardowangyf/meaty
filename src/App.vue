@@ -1,17 +1,21 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <HomePage />
   </div>
 </template>
 
 <script>
-import HelloWorld from '../src/view/HelloWorld.vue'
+import HomePage from "./view/HomePage.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HomePage,
+  },
+};
 </script>
 
-<style></style>
+<style>
+body {
+  margin: 0;
+}
+</style>
