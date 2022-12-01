@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NotFound from '../view/NotFound.vue'
 import HomePage from '../view/HomePage.vue'
+import HomeAll from '../components/HomeAll.vue'
 
 
 export default new Router({
@@ -13,11 +14,11 @@ export default new Router({
             redirect: '/homepage',
             component: HomePage,
             children: [
-                // {
-                //     path: '/list/:type',
-                //     component: Items,
-                //     props: true
-                // },
+                {
+                    path: '/homepage/:type',
+                    component: HomeAll,
+                    props: true
+                },
             ]
         },
         {
