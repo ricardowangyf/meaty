@@ -7,7 +7,6 @@ import HomeAll from '../components/HomeAll.vue'
 
 export default new Router({
     mode: 'history',
-    linkActiveClass: 'isactive',
     routes: [
         {
             path: '/',
