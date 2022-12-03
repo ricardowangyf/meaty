@@ -1,14 +1,12 @@
 <template>
   <!-- 路由内容 -->
-  <div class="password-all">
-    <div class="password-leftwhite">
-      <img :src="eal" style="border-radius: 5px" />
+  <div class="paragraphcontent">
+    <div class="picture">
+      <img :src="des" class="desa" />
     </div>
-    <div class="password-right">
-      <div class="password-jkl">
-        <h1 class="title">{{ title }}</h1>
-        <h2 class="des">{{ des }}</h2>
-      </div>
+    <div class="textspacing">
+      <h1 class="header">{{ title }}</h1>
+      <h2 class="paragraph">{{ eal }}</h2>
     </div>
   </div>
 </template>
@@ -41,5 +39,41 @@ export default {
   border-radius: 5.04px;
   width: 100%;
   height: 130px;
+}
+
+.paragraphcontent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.desa {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.desa {
+  width: 90px;
+  height: 90px;
+}
+
+.textspacing {
+  padding-top: 22px;
+}
+
+.textspacing .header {
+  font-family: Helvetica;
+  font-size: 18px;
+  color: #333333;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.textspacing .paragraph {
+  opacity: 0.6;
+  font-family: Helvetica;
+  font-size: 13.37px;
+  color: #333333;
+  font-weight: 400;
+  margin-right: 40px;
 }
 </style>
