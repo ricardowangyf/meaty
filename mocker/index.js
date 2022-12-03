@@ -9,7 +9,7 @@ const proxy = {
     'GET /api/user/': [
         {
             "name": "仙人掌",
-            "imgurl": "/img/cactus.png",
+            "imgurl": "/img/cactus.jpg",
             "paragraph":"叶片一般都是很饱满的，并且株型也很紧凑，橘珠看起来是很小巧的...",
             "favorties": true,
             "trash": "2022/12/01",
@@ -21,6 +21,6 @@ const proxy = {
             "favorties": true,
             "trash": "2022/12/01",
         },
-    ],
+    ],  
 }
 module.exports = (noProxy ? {} : delay(proxy, 10));
