@@ -1,44 +1,47 @@
 <template>
   <div class="body center">
-    <div class="productname">
-      <h1>产品名字</h1>
-    </div>
-    <input class="homepageinput" placeholder="搜索您想要的产品" />
     <div class="main">
-      <div class="rectangle">
-        <div class="content">
-          <h1 class="meatyname">多肉植物</h1>
-          <p class="air">让空气更加清新</p>
-          <p class="make">MAKE THE AIR FRESHRE</p>
+      <input
+        class="homepageinput"
+        placeholder="搜索您想要的产品"
+        v-model.trim="keyWord"
+      />
+      <div class="centernow">
+        <div class="rectangle">
+          <div class="content">
+            <h1 class="meatyname">多肉植物</h1>
+            <p class="air">让空气更加清新</p>
+            <p class="make">MAKE THE AIR FRESHRE</p>
+          </div>
+          <img src="../assets/img/cactus.jpg" class="cactus" />
         </div>
-        <img src="../assets/img/cactus.jpg" class="cactus" />
+        <div class="routerlink">
+          <router-link to="/homepage/all" class="anotherbutton">
+            <div class="fontsize">全部</div>
+          </router-link>
+          <router-link to="/homepage/sunflower" class="anotherbutton">
+            <div class="anotherfontsize">向日葵</div>
+          </router-link>
+          <router-link to="/homepage/cactus" class="anotherbutton">
+            <div class="anotherfontsize">仙人掌</div>
+          </router-link>
+          <router-link to="/homepage/greenpineapple" class="anotherbutton">
+            <div class="anotherfontsize">绿萝</div>
+          </router-link>
+        </div>
+        <li v-for="(users, i) in users" :key="users.name" class="background">
+          <HomeAll
+            :title="users.name"
+            :des="users.imgurl"
+            :eal="users.paragraph"
+            :class="
+              name === users.name || (i === 0 && !name)
+                ? 'router-link-exact-active'
+                : undefined
+            "
+          />
+        </li>
       </div>
-      <div class="routerlink">
-        <router-link to="/homepage/all" class="anotherbutton">
-          <div class="fontsize">全部</div>
-        </router-link>
-        <router-link to="/homepage/sunflower" class="anotherbutton">
-          <div class="anotherfontsize">向日葵</div>
-        </router-link>
-        <router-link to="/homepage/cactus" class="anotherbutton">
-          <div class="anotherfontsize">仙人掌</div>
-        </router-link>
-        <router-link to="/homepage/greenpineapple" class="anotherbutton">
-          <div class="anotherfontsize">绿萝</div>
-        </router-link>
-      </div>
-      <li v-for="(users, i) in users" :key="users.name" class="background">
-        <HomeAll
-          :title="users.name"
-          :des="users.imgurl"
-          :eal="users.paragraph"
-          :class="
-            name === users.name || (i === 0 && !name)
-              ? 'router-link-exact-active'
-              : undefined
-          "
-        />
-      </li>
       <div class="navigationbar">
         <router-link to="home" style="background: white">
           <div class="padding">
@@ -80,6 +83,7 @@ export default {
     return {
       users: [{}],
       name: " ",
+      keyWord: " ",
     };
   },
   mounted() {
@@ -90,6 +94,26 @@ export default {
   },
   components: {
     HomeAll,
+  },
+  methods: {
+    filterDatas(type, list) {
+      if (type === "trash") {
+        this.items = list.filter((item) => item.deleteAt);
+      } else if (type === "favorites") {
+        this.items = list.filter((item) => item.favorties);
+      } else {
+        this.items = list;
+      }
+      console.log("this.items", this.items);
+      console.log("type:  ", type);
+      this.items &&
+        this.items.length > 0 &&
+        this.$router
+          .push(`/list/${type}/detail/${this.items[0].name}`)
+          .catch((err) => {
+            console.log(err);
+          });
+    },
   },
 };
 </script>
@@ -111,10 +135,6 @@ a {
   text-decoration: none;
 }
 
-.body {
-  margin: 0.5rem;
-}
-
 .homepageinput {
   border-radius: 5.76px;
   border: none;
@@ -131,18 +151,10 @@ a {
   height: 2.4rem;
 }
 
-/*.productname {
-  padding-bottom: 1px;
+.centernow {
+  margin-left: 0.9rem;
+  margin-right: 0.9rem;
 }
-
-.productname h1 {
-  font-family: Helvetica;
-  font-size: 5.82px;
-  color: #333333;
-  letter-spacing: 0;
-  margin: 0;
-  font-weight: 400;
-}*/
 
 .rectangle {
   box-shadow: 0 2px 4px 0 rgb(171 171 171 / 21%);
@@ -207,65 +219,54 @@ a {
 }
 
 .routerlink {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
 }
 
 .cactus {
-  width: 110px;
+  width: 8rem;
   height: 9.1rem;
 }
 
 .fontsize {
-  text-decoration: none;
-  font-size: 13px;
+  font-size: 1rem;
   text-align: center;
-  font-family: Helvetica;
-  color: #333333;
+  color: #fff;
   letter-spacing: 0;
-  padding-top: 7px;
+  padding-top: 6px;
   opacity: 0.6;
 }
 
 .anotherfontsize {
-  text-decoration: none;
-  font-size: 13px;
+  font-size: 1rem;
   letter-spacing: 0;
   opacity: 0.7;
-  color: #333333;
   text-align: center;
-  padding-top: 6px;
-}
-
-.button {
-  background: #4c6ef5;
-  box-shadow: 0 4px 10px 0 rgb(76 110 245 / 37%);
-  border-radius: 19.8px;
-}
-
-.button {
-  width: 20%;
-  height: 33px;
+  opacity: 0.7;
+  /* font-size: 4.37px; */
+  color: #333333;
+  padding-top: 0.3rem;
 }
 
 .anotherbutton {
   background: #f1f3f5;
-  border-radius: 20px;
+  border-radius: 1rem;
 }
 
 .anotherbutton {
   width: 20%;
-  height: 33px;
+  height: 2.1rem;
 }
 
 .router-link-exact-active {
   background: #4c6ef5;
+  opacity: 0.7;
   color: #fff;
 }
 
 .background {
   background: #ffffff;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
     0 3px 6px 0 rgb(106 108 118 / 13%);
   border-radius: 5.04px;
@@ -277,6 +278,7 @@ a {
 }
 
 .navigationbar {
+  margin-top: 3.6rem;
   box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
     0 3px 6px 0 rgb(106 108 118 / 13%);
 }
@@ -288,12 +290,12 @@ a {
 
 .padding {
   text-align: center;
-  padding: 5px;
+  padding: 1rem;
 }
 
 .home {
   font-family: Helvetica;
-  font-size: 3.64px;
+  font-size: 0.64rem;
   color: #929292;
   letter-spacing: 0.04px;
   text-align: center;
