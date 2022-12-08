@@ -81,7 +81,7 @@ export default {
   props: ["type"],
   data() {
     return {
-      users: [{}],
+      users: [],
       name: " ",
       keyWord: " ",
     };
