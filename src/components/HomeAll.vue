@@ -48,7 +48,7 @@ export default {
 }
 
 .desa {
-  border-radius: 5px;
+  border-radius: 30px;
   padding: 20px;
 }
 
@@ -62,7 +62,7 @@ export default {
 }
 
 .textspacing {
-  height: 6rem;
+  height: 7rem;
   width: 12rem;
 }
 
@@ -81,5 +81,12 @@ export default {
   color: #333333;
   font-weight: 400;
   margin-right: 40px;
+}
+
+.paragraph {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
 }
 </style>
