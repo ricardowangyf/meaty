@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import NotFound from '../view/NotFound.vue'
 import HomePage from '../view/HomePage.vue'
+import CommUnity from '../view/CommUnity.vue'
 import HomeAll from '../components/HomeAll.vue'
 
 
@@ -10,7 +11,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/homepage',
+            redirect: '/homepage/all',
             component: HomePage,
             children: [
                 {
@@ -18,6 +19,12 @@ export default new Router({
                     component: HomeAll,
                     props: true
                 },
+                {
+                    path: '/community/:type',
+                    name: '/community',
+                    component: CommUnity,
+                    props: true
+                  },
             ]
         },
         {
