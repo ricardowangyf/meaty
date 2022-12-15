@@ -1,11 +1,17 @@
 <template>
   <div class="body center">
     <div class="main">
-      <input
-        class="homepageinput"
-        placeholder="搜索您想要的产品"
-        v-model.trim="keyWord"
-      />
+      <div class="inputandcion">
+        <input
+          class="keyword"
+          laceholder="搜索你想要的产品"
+          v-model.trim="keyWord"
+          style=""
+        />
+        <button @click="serch">
+          <img class="hualigs" src="../assets/img/search.svg" alt="" />
+        </button>
+      </div>
       <div class="centernow">
         <div class="rectangle">
           <div class="content">
@@ -29,13 +35,17 @@
             <div class="anotherfontsize">绿萝</div>
           </router-link>
         </div>
-        <li v-for="(users, i) in users" :key="users.name" class="background">
+        <li
+          v-for="(tableData, i) in tableData"
+          :key="tableData.name"
+          class="background"
+        >
           <HomeAll
-            :title="users.name"
-            :des="users.imgurl"
-            :eal="users.paragraph"
+            :title="tableData.name"
+            :des="tableData.imgurl"
+            :eal="tableData.paragraph"
             :class="
-              name === users.name || (i === 0 && !name)
+              name === tableData.name || (i === 0 && !name)
                 ? 'router-link-exact-active'
                 : undefined
             "
@@ -43,7 +53,10 @@
         </li>
       </div>
       <div class="navigationbar">
-        <router-link to="home" style="background: white">
+        <router-link
+          :to="`/homepage/${type}/${tableData.name}`"
+          style="background: white"
+        >
           <div class="padding">
             <li>
               <img src="../assets/img/home.svg" />
@@ -51,7 +64,7 @@
             <li class="home">主页</li>
           </div>
         </router-link>
-        <router-link to="community" style="background: white">
+        <router-link to="/CommUnity" style="background: white">
           <div class="padding">
             <li>
               <img src="../assets/img/community.svg" />
@@ -59,7 +72,7 @@
             <li class="home">社区</li>
           </div>
         </router-link>
-        <router-link to="shop" style="background: white">
+        <router-link to="/shopcenter" style="background: white">
           <div class="padding">
             <li>
               <img src="../assets/img/shop.svg" />
@@ -81,35 +94,66 @@ export default {
   props: ["type"],
   data() {
     return {
-      users: [],
+      tableData: [],
+      item: [],
       name: " ",
       keyWord: " ",
     };
   },
   mounted() {
     reqCategoryList().then((data) => {
-      this.users = data.data;
-      console.log("---> ", this.users);
+      this.tableData = data.data;
+      console.log("---> ", this.tableData);
     });
   },
   components: {
     HomeAll,
   },
+  watch: {
+    $route: {
+      handler(newVal, olaVal) {
+        const newType = newVal.params.type;
+        const oldType = olaVal.params.type;
+        this.name = newVal.params.name;
+        if (newType && newType !== oldType) {
+          this.filterDatas(newType, this.tableData);
+        }
+        // console.log("this.tableData", this.tableData);
+      },
+    },
+  },
   methods: {
-    filterDatas(type, list) {
-      if (type === "trash") {
-        this.items = list.filter((item) => item.deleteAt);
-      } else if (type === "favorites") {
-        this.items = list.filter((item) => item.favorties);
+    serch() {
+      var dataLists = [];
+      if (this.keyWord) {
+        for (var i = 0; i < this.tableData.length; i++) {
+          if (this.tableData[i].name === this.keyWord) {
+            dataLists.push(this.tableData[i]);
+          }
+        }
       } else {
-        this.items = list;
+        dataLists = this.tableData;
       }
-      console.log("this.items", this.items);
-      console.log("type:  ", type);
-      this.items &&
-        this.items.length > 0 &&
+      this.item = [...dataLists];
+      console.log("this.item", this.item);
+      console.log("dataLists", dataLists);
+    },
+    filterDatas(type, list) {
+      if (type === "sunflower") {
+        this.item = list.filter((item) => item.sunflower);
+      } else if (type === "cactus") {
+        this.item = list.filter((item) => item.cactus);
+      } else if (type === "greenpineapple") {
+        this.item = list.filter((item) => item.greenpineapple);
+      } else {
+        this.item = list;
+      }
+      console.log("this.item", this.item);
+      console.log("type", type);
+      this.item &&
+        this.item.length > 0 &&
         this.$router
-          .push(`/list/${type}/detail/${this.items[0].name}`)
+          .push(`/homepage/${type}/${this.tableData.name}`)
           .catch((err) => {
             console.log(err);
           });
@@ -135,11 +179,31 @@ a {
   text-decoration: none;
 }
 
+.body {
+  padding-top: 25px;
+}
+
+.inputandcion {
+  display: flex;
+}
+
+.inputandcion {
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+}
+
+.inputandcion button {
+  position: relative;
+  right: 35px;
+  background: rgb(250, 250, 245);
+  border: none;
+  padding: 0;
+}
+
 .homepageinput {
   border-radius: 5.76px;
   border: none;
-  background: url(http://localhost:8080/img/search.94cb75fc.svg)
-    no-repeat#fafaf5;
+  background: #fafaf5;
   padding-left: 1rem;
   margin-bottom: 1rem;
   outline: none;
@@ -164,6 +228,7 @@ a {
 
 .rectangle {
   width: 98%;
+
   height: 9.1rem;
 }
 
@@ -231,7 +296,7 @@ a {
 .fontsize {
   font-size: 1rem;
   text-align: center;
-  color: #fff;
+  color: #333333;
   letter-spacing: 0;
   padding-top: 6px;
   opacity: 0.6;
@@ -240,10 +305,8 @@ a {
 .anotherfontsize {
   font-size: 1rem;
   letter-spacing: 0;
-  opacity: 0.7;
   text-align: center;
   opacity: 0.7;
-  /* font-size: 4.37px; */
   color: #333333;
   padding-top: 0.3rem;
 }
@@ -299,5 +362,14 @@ a {
   color: #929292;
   letter-spacing: 0.04px;
   text-align: center;
+}
+
+.keyword {
+  width: 20rem;
+  background: #fafaf5;
+  border-radius: 5.76px;
+  height: 2.5rem;
+  border: none;
+  outline: none;
 }
 </style>
