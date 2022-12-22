@@ -44,7 +44,7 @@ export default {
 
 .paragraphcontent {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .desa {

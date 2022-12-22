@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import NotFound from '../view/NotFound.vue'
-import HomePage from '../view/HomePage.vue'
-import CommUnity from '../view/CommUnity.vue'
-import HomeAll from '../components/HomeAll.vue'
+
+const HomePage = () => import('../view/HomePage.vue')
+const NotFound = () => import('../view/NotFound.vue')
+const HomeAll = () => import('../components/HomeAll.vue')
+const CommUnity = () => import('../view/CommUnity.vue')
 
 
 export default new Router({
@@ -11,21 +12,18 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/homepage/all',
+            // redirect: '/homepage/all',
             component: HomePage,
-            children: [
-                {
-                    path: '/homepage/:type',
-                    component: HomeAll,
-                    props: true
-                },
-                {
-                    path: '/community/:type',
-                    name: '/community',
-                    component: CommUnity,
-                    props: true
-                  },
-            ]
+        },
+        {
+            path: '/HomeAll',
+            name: '/HomeAll',
+            component: HomeAll,
+        },
+        {
+            name:'CommUnity',
+            path:'/CommUnity',
+            component: CommUnity
         },
         {
             path: '*',
@@ -37,6 +35,10 @@ export default new Router({
 const originalPush = Router.prototype.push
 
 Router.prototype.push = function push(location) {
-    return originalPush.call(this, location).catch(err => err)
+    console.log('===location====?',location)
+    return originalPush.call(this, location).catch(err =>{
+        console.log('==err======',err)    
+       return err
+    })
 }
 Vue.use(Router);
