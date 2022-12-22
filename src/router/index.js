@@ -12,7 +12,6 @@ export default new Router({
     routes: [
         {
             path: '/',
-            // redirect: '/homepage/all',
             component: HomePage,
         },
         {

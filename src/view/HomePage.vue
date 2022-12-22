@@ -20,23 +20,8 @@
           </div>
           <img src="../assets/img/cactus.jpg" class="cactus" />
         </div>
-        <div class="routerlink">
-          <router-link
-            to="/homepage/all"
-            class="anotherbutton router-link-exact-active"
-          >
-            <div class="fontsize">全部</div>
-          </router-link>
-          <router-link to="/homepage/sunflower" class="xiangrikui">
-            <div class="anotherfontsize">向日葵</div>
-          </router-link>
-          <router-link to="/homepage/cactus" class="xiangrikui">
-            <div class="anotherfontsize">仙人掌</div>
-          </router-link>
-          <router-link to="/homepage/greenpineapple" class="xiangrikui">
-            <div class="anotherfontsize">绿萝</div>
-          </router-link>
-        </div>
+        <!-- 过滤按钮 -->
+        <Filterbutton />
         <li
           v-for="(tableData, i) in tableData"
           :key="tableData.name"
@@ -54,38 +39,16 @@
           />
         </li>
       </div>
-      <div class="navigationbar">
-        <router-link to="/all" style="background: white">
-          <div class="padding">
-            <li>
-              <img src="../assets/img/home.svg" />
-            </li>
-            <li class="home">主页</li>
-          </div>
-        </router-link>
-        <router-link to="/commUnity" style="background: white">
-          <div class="padding">
-            <li>
-              <img src="../assets/img/community.svg" />
-            </li>
-            <li class="home">社区</li>
-          </div>
-        </router-link>
-        <router-link to="/shopcenter" style="background: white">
-          <div class="padding">
-            <li>
-              <img src="../assets/img/shop.svg" />
-            </li>
-            <li class="home">商城</li>
-          </div>
-        </router-link>
-      </div>
+      <!-- 底部商品导航 -->
+      <FooterPage />
     </div>
   </div>
 </template>
 
 <script>
-import HomeAll from "../components/HomeAll.vue";
+import HomeAll from "../components/HomeAll.vue"; //商品信息
+import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
+import FooterPage from "../components/Footer.vue"; //底部商品导航
 import { reqCategoryList } from "../API/index";
 
 export default {
@@ -107,6 +70,8 @@ export default {
   },
   components: {
     HomeAll,
+    FooterPage, //底部商品导航,
+    Filterbutton, //过滤按钮
   },
   watch: {
     $route: {
@@ -212,33 +177,7 @@ a {
 .centernow {
   margin-left: 0.9rem;
   margin-right: 0.9rem;
-  .routerlink {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1.3rem;
-    padding-bottom: 1.3rem;
-    .anotherfontsize {
-      font-size: 1rem;
-      letter-spacing: 0;
-      text-align: center;
-      opacity: 0.7;
-      color: #333333;
-      padding-top: 0.3rem;
-    }
-    .anotherbutton {
-      border-radius: 1rem;
-    }
-    .anotherbutton {
-      width: 20%;
-      height: 2.1rem;
-    }
-    .xiangrikui {
-      background: #f1f3f5;
-      border-radius: 19.8px;
-      width: 20%;
-      height: 2.1rem;
-    }
-  }
+
   .cactus {
     width: 8rem;
     height: 9.1rem;
@@ -298,28 +237,5 @@ a {
   border-radius: 5.04px;
   width: 100%;
   height: 9rem;
-}
-.navigationbar {
-  position: fixed;
-  background: white;
-  top: 666px;
-  width: 22.4rem;
-  box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
-    0 3px 6px 0 rgb(106 108 118 / 13%);
-  display: flex;
-  justify-content: space-between;
-}
-
-.padding {
-  text-align: center;
-  padding: 1rem;
-}
-
-.home {
-  font-family: Helvetica;
-  font-size: 0.64rem;
-  color: #929292;
-  letter-spacing: 0.04px;
-  text-align: center;
 }
 </style>
