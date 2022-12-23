@@ -12,16 +12,12 @@
         </button>
       </div>
       <div class="centernow">
-        <div class="rectangle">
-          <div class="content">
-            <h1 class="meatyname">多肉植物</h1>
-            <p class="air">让空气更加清新</p>
-            <p class="make">MAKE THE AIR FRESHRE</p>
-          </div>
-          <img src="../assets/img/cactus.jpg" class="cactus" />
-        </div>
+        <!-- 轮播图 -->
+        <RectAngle />
+        
         <!-- 过滤按钮 -->
         <Filterbutton />
+        
         <li
           v-for="(tableData, i) in tableData"
           :key="tableData.name"
@@ -48,8 +44,9 @@
 <script>
 import HomeAll from "../components/HomeAll.vue"; //商品信息
 import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
+import RectAngle from "../components/rectangle.vue"; //过滤按钮
 import FooterPage from "../components/Footer.vue"; //底部商品导航
-import { reqCategoryList } from "../API/index";
+import { reqCategoryList } from "../API/index"; //轮播图
 
 export default {
   name: "HomePage",
@@ -71,7 +68,8 @@ export default {
   components: {
     HomeAll,
     FooterPage, //底部商品导航,
-    Filterbutton, //过滤按钮
+    Filterbutton, //过滤按钮,
+    RectAngle,//轮播图
   },
   watch: {
     $route: {
@@ -181,44 +179,6 @@ a {
   .cactus {
     width: 8rem;
     height: 9.1rem;
-  }
-  .rectangle {
-    width: 98%;
-    height: 9.1rem;
-  }
-  .rectangle {
-    box-shadow: 0 2px 4px 0 rgb(171 171 171 / 21%);
-    border-radius: 0.4rem;
-    background-color: #f9d694;
-    display: flex;
-    justify-content: space-between;
-    .content {
-      padding-left: 1rem;
-      padding-top: 1rem;
-    }
-    .meatyname {
-      font-family: Helvetica;
-      font-size: 25px;
-      color: #382d23;
-      letter-spacing: 0;
-      font-weight: 400;
-    }
-    .make {
-      opacity: 0.6;
-      font-family: Helvetica;
-      font-size: 3.39px;
-      color: #382d23;
-      letter-spacing: 0;
-      font-weight: 300;
-    }
-    .air {
-      opacity: 0.8;
-      font-family: Helvetica;
-      font-size: 5.8px;
-      color: #382d23;
-      font-weight: 400;
-      letter-spacing: 0;
-    }
   }
 }
 .fontsize {
