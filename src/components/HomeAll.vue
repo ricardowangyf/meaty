@@ -42,11 +42,6 @@ export default {
   height: 130px;
 }
 
-.paragraphcontent {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .desa {
   border-radius: 30px;
   padding: 20px;
@@ -62,8 +57,8 @@ export default {
 }
 
 .textspacing {
-  height: 7rem;
-  width: 12rem;
+  height: 7.6rem;
+    width: 10rem;
 }
 
 .textspacing .header {
@@ -72,6 +67,7 @@ export default {
   color: #333333;
   font-weight: 400;
   letter-spacing: 0;
+  margin: 0;
 }
 
 .textspacing .paragraph {

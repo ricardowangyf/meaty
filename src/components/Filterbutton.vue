@@ -1,18 +1,18 @@
 <template>
   <div class="routerlink">
     <router-link
-      to="/homepage/all"
+      to="/all"
       class="anotherbutton router-link-exact-active"
     >
       <div class="fontsize">全部</div>
     </router-link>
-    <router-link to="/homepage/sunflower" class="xiangrikui">
+    <router-link to="/sunflower" class="xiangrikui">
       <div class="anotherfontsize">向日葵</div>
     </router-link>
-    <router-link to="/homepage/cactus" class="xiangrikui">
+    <router-link to="/cactus" class="xiangrikui">
       <div class="anotherfontsize">仙人掌</div>
     </router-link>
-    <router-link to="/homepage/greenpineapple" class="xiangrikui">
+    <router-link to="/greenpineapple" class="xiangrikui">
       <div class="anotherfontsize">绿萝</div>
     </router-link>
   </div>
@@ -28,8 +28,8 @@ export default {
 .routerlink {
   display: flex;
   justify-content: space-between;
-  padding-top: 1.3rem;
-  padding-bottom: 1.3rem;
+  padding-top: 2.3rem;
+  padding-bottom: 2.3rem;
   .anotherfontsize {
     font-size: 1rem;
     letter-spacing: 0;
