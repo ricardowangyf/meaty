@@ -21,13 +21,13 @@ export default new Router({
             component: HomeAll,
         },
         {
-            name:'CommUnity',
-            path:'/CommUnity',
+            name: 'CommUnity',
+            path: '/CommUnity',
             component: CommUnity
         },
         {
-            name:'shopcenter',
-            path:'/shopcenter',
+            name: 'shopcenter',
+            path: '/shopcenter',
             component: shopcenter
         },
         {
@@ -37,13 +37,12 @@ export default new Router({
         },
     ]
 })
-const originalPush = Router.prototype.push
 
+const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
-    console.log('===location====?',location)
-    return originalPush.call(this, location).catch(err =>{
-        console.log('==err======',err)    
-       return err
+    return originalPush.call(this, location).catch(err => {
+        return err
     })
 }
+
 Vue.use(Router);
