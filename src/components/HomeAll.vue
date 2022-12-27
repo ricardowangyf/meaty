@@ -58,7 +58,7 @@ export default {
 
 .textspacing {
   height: 7.6rem;
-    width: 10rem;
+  width: 10rem;
 }
 
 .textspacing .header {

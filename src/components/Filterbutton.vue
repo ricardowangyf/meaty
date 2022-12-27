@@ -1,9 +1,6 @@
 <template>
   <div class="routerlink">
-    <router-link
-      to="/all"
-      class="anotherbutton router-link-exact-active"
-    >
+    <router-link to="/all" class="anotherbutton router-link-exact-active">
       <div class="fontsize">全部</div>
     </router-link>
     <router-link to="/sunflower" class="xiangrikui">
@@ -28,8 +25,8 @@ export default {
 .routerlink {
   display: flex;
   justify-content: space-between;
-  padding-top: 2.3rem;
-  padding-bottom: 2.3rem;
+  padding-top: 1.3rem;
+  padding-bottom: 1.3rem;
   .anotherfontsize {
     font-size: 1rem;
     letter-spacing: 0;
