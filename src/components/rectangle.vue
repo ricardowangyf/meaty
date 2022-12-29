@@ -1,4 +1,5 @@
 <template>
+  <!-- 轮播图组件 -->
   <div class="rectangle">
     <div class="content">
       <h1 class="meatyname">多肉植物</h1>

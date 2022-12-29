@@ -1,5 +1,5 @@
 <template>
-  <!-- 路由内容 -->
+  <!-- 多肉植物组件 -->
   <div class="paragraphcontent">
     <div class="picture">
       <img :src="des" class="desa" />
@@ -50,6 +50,9 @@ export default {
 .desa {
   width: 100px;
   height: 100px;
+}
+.paragraphcontent{
+  display: flex;
 }
 
 .textspacing {

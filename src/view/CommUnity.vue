@@ -1,4 +1,5 @@
 <template>
+  <!-- 社区 -->
   <div>
     xxxxasdadsasdwfwedfgwaregegrx
     <FooterPage />

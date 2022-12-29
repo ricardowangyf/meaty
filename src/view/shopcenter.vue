@@ -1,4 +1,5 @@
 <template>
+  <!-- 商城页面 -->
   <div class="juzhong">
     <Filterbutton />
     <div>
@@ -56,13 +57,16 @@ export default {
 li {
   list-style-type: none;
 }
+
 a {
   text-decoration: none;
 }
+
 .router-link-exact-active {
   background: #4c6ef5;
   color: #fff;
 }
+
 .fontsize {
   font-size: 1rem;
   text-align: center;
@@ -70,16 +74,19 @@ a {
   padding-top: 6px;
   opacity: 0.6;
 }
+
 .paragraphcontent {
   display: flex;
   justify-content: flex-start;
   background: #fff;
   border: none;
 }
+
 .juzhong {
   margin-left: 25px;
   margin-right: 25px;
 }
+
 .background {
   background: #ffffff;
   margin-bottom: 1.9rem;
