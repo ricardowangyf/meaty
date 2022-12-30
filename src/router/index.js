@@ -6,6 +6,8 @@ const NotFound = () => import('../view/NotFound.vue')
 const HomeAll = () => import('../components/HomeAll.vue')
 const CommUnity = () => import('../view/CommUnity.vue')
 const shopcenter = () => import('../view/shopcenter.vue')
+const routerlist = () => import('../view/routerlist.vue')
+
 
 
 export default new Router({
@@ -28,7 +30,14 @@ export default new Router({
         {
             name: 'shopcenter',
             path: '/shopcenter',
-            component: shopcenter
+            component: shopcenter,
+            children: [
+                {
+                    path: '/shopcenter/routerlist',
+                    name: '/shopcenter/routerlist',
+                    component: routerlist,
+                },
+            ]
         },
         {
             path: '*',
