@@ -1,4 +1,5 @@
 <template>
+  <!-- 底部导航栏 -->
   <div class="navigationbar">
     <router-link to="/" class="backgroundd">
       <div class="padding">
@@ -42,10 +43,12 @@ export default {
     0 3px 6px 0 rgb(106 108 118 / 13%);
   display: flex;
   justify-content: space-between;
+
   .padding {
     text-align: center;
     padding: 1rem;
   }
+
   .home {
     font-family: Helvetica;
     font-size: 0.64rem;
@@ -53,6 +56,7 @@ export default {
     letter-spacing: 0.04px;
     text-align: center;
   }
+
   .backgroundd {
     background: white;
   }
