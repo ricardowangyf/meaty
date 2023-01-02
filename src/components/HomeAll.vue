@@ -51,7 +51,8 @@ export default {
   width: 100px;
   height: 100px;
 }
-.paragraphcontent{
+
+.paragraphcontent {
   display: flex;
 }
 
@@ -76,8 +77,9 @@ export default {
 .textspacing .paragraph {
   opacity: 0.6;
   font-family: Helvetica;
-  font-size: 13.37px;
+  font-size: 4.37px;
   color: #333333;
+  letter-spacing: 0;
   font-weight: 400;
   margin-right: 40px;
 }
