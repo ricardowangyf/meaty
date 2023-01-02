@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const HomePage = () => import('../view/HomePage.vue')
-const NotFound = () => import('../view/NotFound.vue')
-const HomeAll = () => import('../components/HomeAll.vue')
-const CommUnity = () => import('../view/CommUnity.vue')
-const shopcenter = () => import('../view/shopcenter.vue')
-const meatydetali = () => import('../view/meatydetali.vue')
+const HomePage = () => import('../view/HomePage.vue') //主页
+const NotFound = () => import('../view/NotFound.vue') //404页面
+const HomeAll = () => import('../components/HomeAll.vue') //多肉植物组件
+const CommUnity = () => import('../view/CommUnity.vue') //社区
+const shopcenter = () => import('../view/shopcenter.vue') //商城页面
+const meatydetali = () => import('../view/meatydetali.vue') //详情页面
 
 
 
