@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkmeaty"]=self["webpackChunkmeaty"]||[]).push([[793],{2793:function(t,e,n){n.r(e),n.d(e,{default:function(){return f}});var u=function(){var t=this,e=t._self._c;return e("div",[t._v(" thq4thq34 ")])},l=[],a={name:"MeatyDetali"},r=a,s=n(1001),c=(0,s.Z)(r,u,l,!1,null,null,null),f=c.exports}}]);
+//# sourceMappingURL=793.5f553d72.js.map
