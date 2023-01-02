@@ -3,34 +3,32 @@
   <div class="juzhong">
     <Filterbutton />
     <div>
-      <li
-        v-for="(tableData, i) in tableData"
-        :key="tableData.name"
-        :class="
-          name === tableData.name || (i === 0 && !item.name)
-            ? 'router-link-exact-active'
-            : undefined
-        "
-        class="background"
-      >
-        <HomeAll
-          :title="tableData.name"
-          :des="tableData.imgurl"
-          :eal="tableData.paragraph"
-        />
+      <li v-for="(tableData, i) in tableData" :key="tableData.name" :class="
+        name === tableData.name || (i === 0 && !item.name)
+          ? 'router-link-exact-active'
+          : undefined
+      " class="background">
+        <router-link to="/shopcenter/meatydetali">
+          <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph">
+          </HomeAll>
+          <meatydetali />
+        </router-link>
       </li>
-      <div class="gouwucjhe">
-        <h1 class="gouwuche">加入购物车</h1>
-      </div>
+      <!-- <div class="gouwucjhe">op
+        <h1 class="gouwuche">{{ shoppingcart }}</h1>
+      </div> -->
     </div>
     <FooterPage />
   </div>
 </template>
+
 <script>
-import Filterbutton from "../components/Filterbutton.vue";
-import FooterPage from "../components/Footer.vue";
+import Filterbutton from "../components/Filterbutton.vue";//过滤按钮
+import FooterPage from "../components/Footer.vue";//底部导航栏
 import HomeAll from "../components/HomeAll.vue"; //商品信息
+import meatydetali from "./meatydetali.vue"; //详情页面
 import { reqCategoryList } from "../API/index"; //轮播图
+
 export default {
   name: "ShopCenter",
   data() {
@@ -43,7 +41,8 @@ export default {
   components: {
     Filterbutton, //过滤按钮,
     HomeAll, //商品信息
-    FooterPage,
+    FooterPage,//底部导航栏
+    meatydetali,//详情页面
   },
   mounted() {
     reqCategoryList().then((data) => {
@@ -99,12 +98,13 @@ a {
 
 .gouwucjhe {
   background: #76c477;
-    position: relative;
-    bottom: 76px;
-    width: 78px;
-    left: 239px;
-    border-top-left-radius: 22px;
-    height: 22px;
+  position: relative;
+  bottom: 76px;
+  width: 78px;
+  left: 239px;
+  border-top-left-radius: 22px;
+  height: 22px;
+
   .gouwuche {
     margin: 0;
     font-family: Helvetica;

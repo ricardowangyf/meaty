@@ -3,11 +3,7 @@
   <div class="body center">
     <div class="main">
       <div class="inputandcion">
-        <input
-          class="keyword"
-          laceholder="搜索你想要的产品"
-          v-model.trim="keyWord"
-        />
+        <input class="keyword" laceholder="搜索你想要的产品" v-model.trim="keyWord" />
         <button @click="serch">
           <img class="hualigs" src="../assets/img/search.svg" alt="" />
         </button>
@@ -15,25 +11,12 @@
       <div class="centernow">
         <!-- 轮播图 -->
         <RectAngle />
-        
+
         <!-- 过滤按钮 -->
         <Filterbutton />
-        
-        <li
-          v-for="(tableData, i) in tableData"
-          :key="tableData.name"
-          :class="
-            name === tableData.name || (i === 0 && !item.name)
-              ? 'router-link-exact-active'
-              : undefined
-          "
-          class="background"
-        >
-          <HomeAll
-            :title="tableData.name"
-            :des="tableData.imgurl"
-            :eal="tableData.paragraph"
-          />
+
+        <li v-for="(tableData) in tableData" :key="tableData.name" class="background">
+          <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
         </li>
       </div>
       <!-- 底部商品导航 -->
@@ -85,7 +68,7 @@ export default {
     },
   },
   methods: {
-    acivemeun() {},
+    acivemeun() { },
     serch() {
       var dataLists = [];
       if (this.keyWord) {
@@ -156,6 +139,7 @@ a {
 .inputandcion {
   padding-left: 1rem;
   padding-bottom: 2rem;
+
   button {
     position: relative;
     right: 35px;
@@ -163,6 +147,7 @@ a {
     border: none;
     padding: 0;
   }
+
   .keyword {
     width: 20rem;
     background: #fafaf5;
@@ -182,21 +167,12 @@ a {
     height: 9.1rem;
   }
 }
+
 .fontsize {
   font-size: 1rem;
   text-align: center;
   letter-spacing: 0;
   padding-top: 6px;
   opacity: 0.6;
-}
-
-.background {
-  background: #ffffff;
-  margin-bottom: 2rem;
-  box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
-    0 3px 6px 0 rgb(106 108 118 / 13%);
-  border-radius: 5.04px;
-  width: 100%;
-  height: 9rem;
 }
 </style>
