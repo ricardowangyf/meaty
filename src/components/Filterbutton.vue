@@ -4,13 +4,13 @@
     <router-link to="/all" class="anotherbutton router-link-exact-active">
       <div class="fontsize">全部</div>
     </router-link>
-    <router-link to="/sunflower" class="xiangrikui">
+    <router-link to="/homepage/sunflower" class="xiangrikui">
       <div class="anotherfontsize">向日葵</div>
     </router-link>
-    <router-link to="/cactus" class="xiangrikui">
+    <router-link to="/homepage/cactus" class="xiangrikui">
       <div class="anotherfontsize">仙人掌</div>
     </router-link>
-    <router-link to="/greenpineapple" class="xiangrikui">
+    <router-link to="/homepage/greenpineapple" class="xiangrikui">
       <div class="anotherfontsize">绿萝</div>
     </router-link>
   </div>
