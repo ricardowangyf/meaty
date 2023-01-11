@@ -4,9 +4,9 @@
     <div class="main">
       <div class="inputandcion">
         <input class="keyword" laceholder="搜索你想要的产品" v-model.trim="keyWord" />
-        <button @click="serch">
+        <!-- <button @click="serch">
           <img class="hualigs" src="../assets/img/search.svg" alt="" />
-        </button>
+        </button> -->
       </div>
       <div class="centernow">
         <!-- 轮播图 -->
@@ -28,7 +28,7 @@
 <script>
 import HomeAll from "../components/HomeAll.vue"; //商品信息
 import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
-import RectAngle from "../components/rectangle.vue"; //过滤按钮
+import RectAngle from "../components/rectangle.vue"; //轮播图组件
 import FooterPage from "../components/Footer.vue"; //底部商品导航
 import { reqCategoryList } from "../API/index"; //轮播图
 
@@ -69,21 +69,21 @@ export default {
   },
   methods: {
     acivemeun() { },
-    serch() {
-      var dataLists = [];
-      if (this.keyWord) {
-        for (var i = 0; i < this.tableData.length; i++) {
-          if (this.tableData[i].name === this.keyWord) {
-            dataLists.push(this.tableData[i]);
-          }
-        }
-      } else {
-        dataLists = this.tableData;
-      }
-      this.item = [...dataLists];
-      console.log("this.item", this.item);
-      console.log("dataLists", dataLists);
-    },
+    // serch() {
+    //   var dataLists = [];
+    //   if (this.keyWord) {
+    //     for (var i = 0; i < this.tableData.length; i++) {
+    //       if (this.tableData[i].name === this.keyWord) {
+    //         dataLists.push(this.tableData[i]);
+    //       }
+    //     }
+    //   } else {
+    //     dataLists = this.tableData;
+    //   }
+    //   this.item = [...dataLists];
+    //   console.log("this.item", this.item);
+    //   console.log("dataLists", dataLists);
+    // },
     filterDatas(type, list) {
       if (type === "sunflower") {
         this.item = list.filter((item) => item.sunflower);
@@ -165,6 +165,15 @@ a {
   .cactus {
     width: 8rem;
     height: 9.1rem;
+  }
+
+  .background {
+    background: #ffffff;
+    margin-bottom: 1.9rem;
+    box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%), 0 3px 6px 0 rgb(226 231 255 / 13%);
+    border-radius: 5.04px;
+    width: 100%;
+    height: 9rem;
   }
 }
 
