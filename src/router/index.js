@@ -11,7 +11,7 @@ const meatydetali = () => import('../view/meatydetali.vue') //详情页面
 
 
 export default new Router({
-    mode: 'history',
+    mode: 'hash',
     routes: [
         {
             path: '/',
@@ -33,9 +33,9 @@ export default new Router({
             component: shopcenter,
             children: [
                 {
-                    path: '/shopcenter/meatydetali',
-                    name: '/shopcenter/meatydetali',
+                    path: '/shopcenter/:type',
                     component: meatydetali,
+                    props: true 
                 },
             ]
         },
