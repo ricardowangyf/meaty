@@ -35,8 +35,7 @@ export default {
 <style>
 .password-jkl {
   background: #ffffff;
-  box-shadow: 0 -3px 6px 0 rgb(103 108 135 / 13%),
-    0 3px 6px 0 rgb(76 77 85 / 13%);
+  box-shadow: 0 -3px 6px 0 rgb(103 108 135 / 13%);
   border-radius: 5.04px;
   width: 100%;
   height: 130px;
@@ -44,12 +43,12 @@ export default {
 
 .desa {
   border-radius: 30px;
-  padding: 20px;
+    padding: 10px;
 }
 
 .desa {
-  width: 100px;
-  height: 100px;
+  width: 115px;
+    height: 115px;
 }
 
 .paragraphcontent {
@@ -57,12 +56,12 @@ export default {
 }
 
 .textspacing {
-  padding-top: 1.3rem;
+  padding-top: 1rem;
 }
 
 .textspacing {
-  height: 7.6rem;
-  width: 10rem;
+  width: 12rem;
+  height: 7.8rem;
 }
 
 .textspacing .header {
@@ -72,6 +71,7 @@ export default {
   font-weight: 400;
   letter-spacing: 0;
   margin: 0;
+  padding-bottom: 10px;
 }
 
 .textspacing .paragraph {
