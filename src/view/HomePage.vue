@@ -161,6 +161,7 @@ a {
 .centernow {
   margin-left: 0.9rem;
   margin-right: 0.9rem;
+  margin-bottom: 8.5rem;
 
   .cactus {
     width: 8rem;
@@ -170,10 +171,11 @@ a {
   .background {
     background: #ffffff;
     margin-bottom: 1.9rem;
-    box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%), 0 3px 6px 0 rgb(226 231 255 / 13%);
+    box-shadow: 21px 18px 12px 3px rgb(173 174 179 / 13%), 7px 2px 8px 10px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
-    width: 100%;
+    width: 20.7rem;
     height: 9rem;
+
   }
 }
 
