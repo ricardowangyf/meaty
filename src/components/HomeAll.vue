@@ -32,23 +32,15 @@ export default {
   },
 };
 </script>
-<style>
-.password-jkl {
-  background: #ffffff;
-  box-shadow: 0 -3px 6px 0 rgb(103 108 135 / 13%);
-  border-radius: 5.04px;
-  width: 100%;
-  height: 130px;
-}
-
+<style lang="less">
 .desa {
   border-radius: 30px;
-    padding: 10px;
+  padding: 10px;
 }
 
 .desa {
   width: 115px;
-    height: 115px;
+  height: 115px;
 }
 
 .paragraphcontent {
@@ -56,15 +48,11 @@ export default {
 }
 
 .textspacing {
-  padding-top: 1rem;
-}
-
-.textspacing {
   width: 12rem;
   height: 7.8rem;
-}
+  padding-top: 1rem;
 
-.textspacing .header {
+  .header {
   font-family: Helvetica;
   font-size: 18px;
   color: #333333;
@@ -73,8 +61,7 @@ export default {
   margin: 0;
   padding-bottom: 10px;
 }
-
-.textspacing .paragraph {
+.paragraph {
   opacity: 0.6;
   font-family: Helvetica;
   font-size: 4.37px;
@@ -82,6 +69,8 @@ export default {
   letter-spacing: 0;
   font-weight: 400;
   margin-right: 40px;
+}
+
 }
 
 .paragraph {
