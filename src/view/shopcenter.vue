@@ -86,16 +86,6 @@ a {
   margin-right: 25px;
 }
 
-.background {
-  background: #ffffff;
-  margin-bottom: 1.9rem;
-  box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
-    0 3px 6px 0 rgb(106 108 118 / 13%);
-  border-radius: 5.04px;
-  width: 100%;
-  height: 9rem;
-}
-
 .gouwucjhe {
   background: #76c477;
   position: relative;
