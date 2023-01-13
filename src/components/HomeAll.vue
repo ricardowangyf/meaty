@@ -68,7 +68,7 @@ export default {
   color: #333333;
   letter-spacing: 0;
   font-weight: 400;
-  margin-right: 40px;
+  margin-right: 35px;
 }
 
 }
