@@ -2,15 +2,14 @@
   <!-- 商城页面 -->
   <div class="juzhong">
     <Filterbutton />
-    <div>
+    <div class="jianju">
       <li v-for="(tableData, i) in tableData" :key="tableData.name" :class="
         name === tableData.name || (i === 0 && !item.name)
           ? 'router-link-exact-active'
           : undefined
       " class="background">
         <router-link to="/shopcenter/meatydetali">
-          <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph">
-          </HomeAll>
+          <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
           <meatydetali />
         </router-link>
       </li>
@@ -61,7 +60,7 @@ a {
   text-decoration: none;
 }
 
-.router-link-exact-active {
+/*.router-link-exact-active {
   background: #4c6ef5;
   color: #fff;
 }
@@ -79,29 +78,42 @@ a {
   justify-content: flex-start;
   background: #fff;
   border: none;
-}
+}*/
 
 .juzhong {
   margin-left: 25px;
   margin-right: 25px;
-}
 
-.gouwucjhe {
-  background: #76c477;
-  position: relative;
-  bottom: 76px;
-  width: 78px;
-  left: 239px;
-  border-top-left-radius: 22px;
-  height: 22px;
+  .jianju {
+    margin-bottom: 8.5rem;
+  }
 
-  .gouwuche {
-    margin: 0;
-    font-family: Helvetica;
-    font-size: 5.1px;
-    color: #ffffff;
-    letter-spacing: 0;
-    text-align: right;
+  .background {
+    background: #ffffff;
+    margin-bottom: 1.9rem;
+    box-shadow: 21px 18px 12px 3px rgb(173 174 179 / 13%), 7px 2px 8px 10px rgb(173 173 179 / 13%);
+    border-radius: 5.04px;
+    width: 18.7rem;
+    height: 8rem;
+  }
+
+  .gouwucjhe {
+    background: #76c477;
+    position: relative;
+    bottom: 76px;
+    width: 78px;
+    left: 239px;
+    border-top-left-radius: 22px;
+    height: 22px;
+
+    .gouwuche {
+      margin: 0;
+      font-family: Helvetica;
+      font-size: 5.1px;
+      color: #ffffff;
+      letter-spacing: 0;
+      text-align: right;
+    }
   }
 }
 </style>
