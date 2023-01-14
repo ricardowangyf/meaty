@@ -90,7 +90,7 @@ a {
 
   .background {
     background: #ffffff;
-    margin-bottom: 1.9rem;
+    margin-bottom: 1.8rem;
     box-shadow: 21px 18px 12px 3px rgb(173 174 179 / 13%), 7px 2px 8px 10px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
     width: 18.7rem;
