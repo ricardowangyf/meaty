@@ -68,22 +68,6 @@ export default {
     },
   },
   methods: {
-    acivemeun() { },
-    // serch() {
-    //   var dataLists = [];
-    //   if (this.keyWord) {
-    //     for (var i = 0; i < this.tableData.length; i++) {
-    //       if (this.tableData[i].name === this.keyWord) {
-    //         dataLists.push(this.tableData[i]);
-    //       }
-    //     }
-    //   } else {
-    //     dataLists = this.tableData;
-    //   }
-    //   this.item = [...dataLists];
-    //   console.log("this.item", this.item);
-    //   console.log("dataLists", dataLists);
-    // },
     filterDatas(type, list) {
       if (type === "sunflower") {
         this.item = list.filter((item) => item.sunflower);
@@ -170,12 +154,10 @@ a {
 
   .background {
     background: #ffffff;
-    margin-bottom: 1.9rem;
-    box-shadow: 21px 18px 12px 3px rgb(173 174 179 / 13%), 7px 2px 8px 10px rgb(173 173 179 / 13%);
+    margin-bottom: 1.8rem;
+    box-shadow: 21px 18px 12px 3px rgb(173 174 179 / 13%), 7px 6px 20px 35px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
-    width: 20.7rem;
-    height: 9rem;
-
+    height: 8rem;
   }
 }
 
