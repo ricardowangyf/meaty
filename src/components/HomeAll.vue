@@ -48,8 +48,8 @@ export default {
 }
 
 .textspacing {
-  width: 12rem;
-  height: 7.8rem;
+  width: 10.8rem;
+  height: 6.6rem;
   padding-top: 1rem;
 
   .header {
