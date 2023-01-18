@@ -155,7 +155,7 @@ a {
   .background {
     background: #ffffff;
     margin-bottom: 1.8rem;
-    box-shadow: 21px 18px 12px 3px rgb(173 174 179 / 13%), 7px 6px 20px 35px rgb(173 173 179 / 13%);
+    box-shadow: 0px 18px 12px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
     height: 8rem;
   }
