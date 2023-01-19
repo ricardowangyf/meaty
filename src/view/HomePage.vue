@@ -4,9 +4,6 @@
     <div class="main">
       <div class="inputandcion">
         <input class="keyword" laceholder="搜索你想要的产品" v-model.trim="keyWord" />
-        <!-- <button @click="serch">
-          <img class="hualigs" src="../assets/img/search.svg" alt="" />
-        </button> -->
       </div>
       <div class="centernow">
         <!-- 轮播图 -->
