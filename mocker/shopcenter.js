@@ -2,7 +2,6 @@ const delay = require('mocker-api/lib/delay');
 const noProxy = process.env.NO_PROXY === 'true';
 
 const proxy = {
-
     'GET /api/user/': [
         {
             "name": "仙人掌",
