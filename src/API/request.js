@@ -12,6 +12,7 @@ requests.interceptors.request.use((config) => {
     //config:配置对象，对象里面有一个属性很重要，headers请求
     return config
 })
+
 requests.interceptors.response.use((res) => {
     return res.data
 }, () => {
