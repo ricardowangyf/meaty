@@ -6,17 +6,12 @@
         <input class="keyword" laceholder="搜索你想要的产品" v-model.trim="keyWord" />
       </div>
       <div class="centernow">
-        <!-- 轮播图 -->
         <RectAngle />
-
-        <!-- 过滤按钮 -->
         <Filterbutton />
-
         <li v-for="(tableData) in tableData" :key="tableData.name" class="background">
           <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
         </li>
       </div>
-      <!-- 底部商品导航 -->
       <FooterPage />
     </div>
   </div>
@@ -140,21 +135,16 @@ a {
 }
 
 .centernow {
-  margin-left: 0.9rem;
-  margin-right: 0.9rem;
-  margin-bottom: 8.5rem;
-
+  margin: 0 1.9rem 6.5rem 1.9rem;
   .cactus {
     width: 8rem;
     height: 9.1rem;
   }
-
   .background {
     background: #ffffff;
     margin-top: 1.8rem;
     box-shadow: 0px 18px 12px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
-    height: 8rem;
   }
 }
 

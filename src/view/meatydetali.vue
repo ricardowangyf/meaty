@@ -3,13 +3,6 @@
   <div class="middleheader">
     <div class="middleheader-center scorall">
       <div class="middlecenter">
-        <div class="serch">
-          <div class="inputandcion">
-            <!-- <button class="sousuo" @click="serch">
-              <div class="claer" />
-            </button> -->
-          </div>
-        </div>
         <div class="button">
           <div v-if="items && items.length > 0">
             <li v-for="(tableData, i) in items" :key="tableData.name">
@@ -25,12 +18,10 @@
         </div>
       </div>
     </div>
-    <!-- <DetailPage /> -->
   </div>
 </template>
 
 <script>
-// import DetailPage from "./DetailPage";
 import { meatydetali } from "../API/index";
 import HomeAll from "../components/HomeAll.vue";
 // 在此处引用button组件
@@ -40,7 +31,6 @@ export default {
   name: "reqCategoryList",
   components: {
     HomeAll,
-    // DetailPage,
   },
   data() {
     return {

@@ -1,12 +1,17 @@
 <template>
   <!-- 多肉植物组件 -->
-  <div class="paragraphcontent">
-    <div class="picture">
-      <img :src="des" class="desa" />
+  <div>
+    <div class="paragraphcontent">
+      <div class="picture">
+        <img :src="des" class="imgsize" />
+      </div>
+      <div class="textspacing">
+        <h1 class="header">{{ title }}</h1>
+        <h2 class="paragraph">{{ eal }}</h2>
+      </div>
     </div>
-    <div class="textspacing">
-      <h1 class="header">{{ title }}</h1>
-      <h2 class="paragraph">{{ eal }}</h2>
+    <div class="buttondiv">
+      <button class="flexend">加入购物车</button>
     </div>
   </div>
 </template>
@@ -33,14 +38,14 @@ export default {
 };
 </script>
 <style lang="less">
-.desa {
+.imgsize {
+  padding: 12px;
   border-radius: 30px;
-  padding: 10px;
 }
 
-.desa {
-  width: 115px;
-  height: 115px;
+.imgsize {
+  width: 104px;
+  height: 104px;
 }
 
 .paragraphcontent {
@@ -48,35 +53,41 @@ export default {
 }
 
 .textspacing {
-  width: 10.8rem;
+  width: 9.8rem;
   height: 6.6rem;
   padding-top: 1rem;
 
   .header {
-  font-family: Helvetica;
-  font-size: 18px;
-  color: #333333;
-  font-weight: 400;
-  letter-spacing: 0;
-  margin: 0;
-  padding-bottom: 10px;
-}
-.paragraph {
-  opacity: 0.6;
-  font-family: Helvetica;
-  font-size: 4.37px;
-  color: #333333;
-  letter-spacing: 0;
-  font-weight: 400;
-  margin-right: 35px;
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .paragraph {
+    opacity: 0.6;
+    font-family: Helvetica;
+    font-size: 4.37px;
+    color: #333333;
+    letter-spacing: 0;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
 }
 
+.buttondiv {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.paragraph {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
+.flexend {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

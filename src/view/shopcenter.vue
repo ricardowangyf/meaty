@@ -13,9 +13,6 @@
           <meatydetali />
         </router-link>
       </li>
-      <!-- <div class="gouwucjhe">op
-        <h1 class="gouwuche">{{ shoppingcart }}</h1>
-      </div> -->
     </div>
     <FooterPage />
   </div>
@@ -60,29 +57,8 @@ a {
   text-decoration: none;
 }
 
-/*.router-link-exact-active {
-  background: #4c6ef5;
-  color: #fff;
-}
-
-.fontsize {
-  font-size: 1rem;
-  text-align: center;
-  letter-spacing: 0;
-  padding-top: 6px;
-  opacity: 0.6;
-}
-
-.paragraphcontent {
-  display: flex;
-  justify-content: flex-start;
-  background: #fff;
-  border: none;
-}*/
-
 .juzhong {
-  margin-left: 25px;
-  margin-right: 25px;
+  margin: 0 25px 0 25px;
 
   .jianju {
     margin-bottom: 8.5rem;
@@ -93,7 +69,6 @@ a {
     margin-top: 1.8rem;
     box-shadow: 0px 18px 12px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
-    height: 8rem;
   }
 
   .gouwucjhe {
