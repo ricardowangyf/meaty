@@ -38,7 +38,7 @@ export default {
   mounted() {
     reqCategoryList().then((data) => {
       this.tableData = data.data;
-      console.log("---> ", this.tableData);
+      console.log("---> ", typeof this.tableData);
     });
   },
   components: {
