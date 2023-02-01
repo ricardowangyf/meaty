@@ -4,13 +4,13 @@
     <router-link to="/all" class="anotherbutton router-link-exact-active">
       <div class="fontsize">全部</div>
     </router-link>
-    <router-link to="/homepage/sunflower" class="xiangrikui">
+    <router-link to="/sunflower" class="xiangrikui">
       <div class="anotherfontsize">向日葵</div>
     </router-link>
-    <router-link to="/homepage/cactus" class="xiangrikui">
+    <router-link to="/cactus" class="xiangrikui">
       <div class="anotherfontsize">仙人掌</div>
     </router-link>
-    <router-link to="/homepage/greenpineapple" class="xiangrikui">
+    <router-link to="/greenpineapple" class="xiangrikui">
       <div class="anotherfontsize">绿萝</div>
     </router-link>
   </div>
@@ -24,27 +24,35 @@ export default {
   mounted() {
     reqCategoryList().then((data) => {
       this.tableData = data.data;
-      console.log("---> ", this.tableData);
+      const type = this.$route.params.type || "all";
+      this.filterDatas(type, data.data);
+      // console.log("this.tableData", data.data);
     });
+  },
+  watch: {
+    $route: {
+      handler(newVal, olaVal) {
+        const newType = newVal.params.type;
+        const oldType = olaVal.params.type;
+        this.name = newVal.params.name;
+        if (newType && newType !== oldType) {
+          this.filterDatas(newType, this.tableData);
+        }
+        console.log("tableData", this.tableData);
+      },
+    },
   },
   methods: {
     filterDatas(type, list) {
-      if (type === "trash") {
-        this.items = list.filter((item) => item.deleteAt);
-      } else if (type === "favorites") {
-        this.items = list.filter((item) => item.favorties);
+      if (type === "greenpineapple") {
+        this.items = list.filter((tableData) => tableData.deleteAt);
+      } else if (type === "cactus") {
+        this.items = list.filter((tableData) => tableData.favorties);
       } else {
         this.items = list;
       }
-      console.log("this.items", this.items);
+      console.log("items", this.items);
       console.log("type:  ", type);
-      this.items &&
-        this.items.length > 0 &&
-        this.$router
-          .push(`/homepage/${type}/${this.items[0].name}`)
-          .catch((err) => {
-            console.log(err);
-          });
     },
   }
 };
@@ -56,6 +64,10 @@ export default {
   justify-content: space-between;
   padding-top: 1.3rem;
   padding-bottom: 1.3rem;
+
+  .fontsize {
+    text-align: center;
+  }
 
   .anotherfontsize {
     font-size: 1rem;

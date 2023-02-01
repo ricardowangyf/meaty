@@ -8,9 +8,7 @@
       <div class="textspacing">
         <h1 class="header">{{ title }}</h1>
         <h2 class="paragraph">{{ eal }}</h2>
-        <el-rate v-model="value" disabled  text-color="#ff9900" score-template="{value}">
-        </el-rate>
-
+        <el-rate v-model="value" disabled text-color="#ff9900" score-template="{value}" />
       </div>
     </div>
     <div class="buttondiv">
@@ -59,7 +57,6 @@ export default {
 
 .el-rate__icon {
   font-size: 18px;
-  /* margin-right: 6px; */
   color: #C0C4CC;
   transition: .3s;
 }
@@ -101,7 +98,7 @@ export default {
 .buttondiv {
   height: 31px;
   text-align: center;
-  FONT-WEIGHT: 100;
+  font-weight: 100;
 }
 
 .flexend {
