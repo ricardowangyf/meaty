@@ -8,9 +8,8 @@
           ? 'router-link-exact-active'
           : undefined
       " class="background">
-        <router-link to="/shopcenter/meatydetali">
+        <router-link :to="`/shopcenter/${tableData.name}`">
           <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
-          <meatydetali />
         </router-link>
       </li>
     </div>
@@ -22,11 +21,11 @@
 import Filterbutton from "../components/Filterbutton.vue";//过滤按钮
 import FooterPage from "../components/Footer.vue";//底部导航栏
 import HomeAll from "../components/HomeAll.vue"; //商品信息
-import meatydetali from "./meatydetali.vue"; //详情页面
 import { reqCategoryList } from "../API/index"; //轮播图
 
 export default {
   name: "ShopCenter",
+  props: ["type"],
   data() {
     return {
       tableData: [],
@@ -38,7 +37,6 @@ export default {
     Filterbutton, //过滤按钮,
     HomeAll, //商品信息
     FooterPage,//底部导航栏
-    meatydetali,//详情页面
   },
   mounted() {
     reqCategoryList().then((data) => {
