@@ -3,14 +3,25 @@
   <div class="body center">
     <div class="main">
       <div class="inputandcion">
-        <input class="keyword" laceholder="搜索你想要的产品" v-model.trim="keyWord" />
+        <input v-model="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword"/>
+        <button class="sousuo" @click="serch">
+          <img class="hualigs" src="../assets/img/search.svg" alt />
+          <div class="claer" />
+        </button>
       </div>
       <div class="centernow">
         <RectAngle />
         <Filterbutton />
-        <li v-for="(tableData) in tableData" :key="tableData.name" class="background">
-          <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
-        </li>
+        <router-link to="/">
+          <li v-for="(tableData,i) in tableData" :key="tableData.name" class="background"
+            :class="
+              name === tableData.name || (i === 0 && !name)
+                ? 'isActive'
+                : undefined
+            ">
+            <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
+          </li>
+        </router-link>
       </div>
       <FooterPage />
     </div>
@@ -38,7 +49,7 @@ export default {
   mounted() {
     reqCategoryList().then((data) => {
       this.tableData = data.data;
-      console.log("---> ", typeof this.tableData);
+      console.log("---> ", this.tableData);
     });
   },
   components: {
@@ -60,23 +71,38 @@ export default {
     },
   },
   methods: {
-    filterDatas(type, list) {
-      if (type === "sunflower") {
-        this.item = list.filter((item) => item.sunflower);
-      } else if (type === "cactus") {
-        this.item = list.filter((item) => item.cactus);
-      } else if (type === "greenpineapple") {
-        this.item = list.filter((item) => item.greenpineapple);
+    serch() {
+      var dataLists = [];
+      if (this.keyWord) {
+        for (var i = 0; i < this.tableData.length; i++) {
+          if (this.tableData[i].name === this.keyWord) {
+            dataLists.push(this.tableData[i]);
+            console.log("this.tableData", this.tableData);
+          }
+        }
       } else {
-        this.item = list;
+        dataLists = this.tableData;
       }
-      console.log("this.item", this.item);
-      console.log("type", type);
-      this.item &&
-        this.item.length > 0 &&
-        this.$router.push(` `).catch((err) => {
-          console.log(err);
-        });
+      this.items = [...dataLists];
+      console.log("this.items", this.items);
+    },
+    filterDatas(type, list) {
+      if (type === "trash") {
+        this.items = list.filter((item) => item.deleteAt);
+      } else if (type === "favorites") {
+        this.items = list.filter((item) => item.favorties);
+      } else {
+        this.items = list;
+      }
+      console.log("this.items", this.items);
+      console.log("type:  ", type);
+      this.items &&
+        this.items.length > 0 &&
+        this.$router
+          .push(`/list/${type}/detail/${this.items[0].name}`)
+          .catch((err) => {
+            console.log(err);
+          });
     },
   },
 };
@@ -103,6 +129,12 @@ a {
   padding-top: 25px;
 }
 
+
+.sousuo {
+  width: 28px;
+  height: 20px;
+}
+
 .inputandcion {
   display: flex;
 }
@@ -119,27 +151,32 @@ a {
   button {
     position: relative;
     right: 35px;
-    background: rgb(250, 250, 245);
+    background: #fafaf5;
     border: none;
     padding: 0;
+    height: 34px;
+    top: 3px;
   }
 
   .keyword {
     width: 20rem;
-    background: #fafaf5;
     border-radius: 5.76px;
     height: 2.5rem;
     border: none;
     outline: none;
+    background: #FAFAF5;
+    border-radius: 5.76px;
   }
 }
 
 .centernow {
   margin: 0 1.9rem 6.5rem 1.9rem;
+
   .cactus {
     width: 8rem;
     height: 9.1rem;
   }
+
   .background {
     background: #ffffff;
     margin-top: 1.8rem;
