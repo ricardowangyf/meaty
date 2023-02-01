@@ -8,7 +8,7 @@ exports.list = [
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "多肉植物",
+        "name": "fleshy",
         "imgurl": "/img/Succulentplants.jpg",
         "paragraph": "多肉植物也叫多水植物、肉质植物,是指植物器官的茎或叶或根具有发达的薄壁组织用以贮藏水分,在外形上显得肥厚多汁的一类植物。",
         "favorties": true,
@@ -16,7 +16,7 @@ exports.list = [
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "桃蛋",
+        "name": "peachegg",
         "imgurl": "/img/peachegg.jpg",
         "paragraph": "醉美人,俗称“桃蛋”,为景天科风车草属多肉植物,与桃美人相比,其叶呈轮生状,使得株型更紧凑,肉质叶稍小,较扁,呈卵圆形,有“卵”的感觉,叶色稍浅一些,顶端没有小红点。花星状,上部红色,有斑点。其叶片卵形至球形,叶片粉紫色,如同熟透的桃子一般",
         "favorties": true,
@@ -24,21 +24,21 @@ exports.list = [
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "虹之玉锦",
+        "name": "RainbowJadeBrocade",
         "imgurl": "/img/rainbowjade brocade.jpg",
         "paragraph": "景天科景天属的多肉植物,为虹之玉的锦化品种。虹之玉锦与虹之玉的叶片大小没有特别大的变化,但颜色会稍有不同,虹之玉锦一般会有粉红色、中绿色等 。生长速度较虹之玉慢很多",
         "trash": "2022/12/01",
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "玉露",
+        "name": "TheBestGreenTea",
         "imgurl": "/img/bestgreentea.jpg",
         "paragraph": "阿福花科、十二卷属下的多肉植物。株高5-12厘米,植株初为单生,以后逐渐呈群生状。肉质叶排列成莲座状,叶色碧绿,顶端呈透明或半透明状,称其为“窗”,表面有深色纵线条,顶端有细小的“须” ",
         "favorties": true,
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "达摩福娘",
+        "name": "CotyledonPendens",
         "imgurl": "/img/cotyledon pendens.jpg",
         "paragraph": "景天科银波锦属多肉植物,属于小型灌木类,由于茎很细,所以很难支撑一直向上生长,会匍匐向下生长。出状态后,叶尖尖端呈粉红色。",
         "favorties": true,
@@ -46,14 +46,14 @@ exports.list = [
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "百合莉莉",
+        "name": "Lily",
         "imgurl": "/img/lily.jpg",
         "paragraph": "百合莉莉易长侧芽,底部叶片易枯萎形成多头老桩,叶片肥厚圆匙状,叶尖不明显,莲花状紧密排列,随养护环境同,叶色绿色到粉橙绿色,出状态的百合莉莉非常好看,但变绿的百合莉莉就有点一脸菜色了。百合莉莉的另一亮点是香气明显,小老桩非常漂亮",
         "trash": "2022/12/01",
         "shoppingcart":"加入购物车"
     },
     {
-        "name": "静夜",
+        "name": "silent night",
         "imgurl": "/img/silentnight.jpg",
         "paragraph": "景天科拟石莲花属的多肉植物、也称多浆植物,属于较迷你的石莲花,个头非常小,很容易群生,日照充分的时候,叶尖会变红,非常可爱。",
         "trash": "2022/12/01",
