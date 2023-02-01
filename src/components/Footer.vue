@@ -35,9 +35,10 @@ export default {
 <style lang='less'>
 .navigationbar {
   position: fixed;
-  background: white;
-  top: 666px;
+  bottom: 0;
   left: 0;
+  right: 0;
+  background: white;
   width: 100%;
   box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
     0 3px 6px 0 rgb(106 108 118 / 13%);
