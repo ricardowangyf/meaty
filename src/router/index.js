@@ -5,9 +5,9 @@ const HomePage = () => import('../view/HomePage.vue') //主页
 const NotFound = () => import('../view/NotFound.vue') //404页面
 const HomeAll = () => import('../components/HomeAll.vue') //多肉植物组件
 const CommUnity = () => import('../view/CommUnity.vue') //社区
+const MeatyDetali = () => import('../view/meatydetali.vue') //社区
 
-
-
+    
 export default new Router({
     mode: 'hash',
     routes: [
@@ -17,13 +17,18 @@ export default new Router({
         },
         {
             path: '/HomeAll',
-            name: '/HomeAll',
+            name: '/homeall',
             component: HomeAll,
         },
         {
             name: 'CommUnity',
-            path: '/CommUnity',
+            path: '/community',
             component: CommUnity
+        },
+        {
+            name: 'MeatyDetali',
+            path: '/meatydetali',
+            component: MeatyDetali
         },
         {
             name: 'shopcenter',
