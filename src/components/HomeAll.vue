@@ -1,12 +1,18 @@
 <template>
-  <!-- 路由内容 -->
-  <div class="paragraphcontent">
-    <div class="picture">
-      <img :src="des" class="desa" />
+  <!-- 详情多肉植物组件 -->
+  <div class="detali-plant">
+    <div class="paragraphcontent">
+      <div class="picture">
+        <img :src="des" class="imgsize" />
+      </div>
+      <div class="textspacing">
+        <h1 class="header">{{ title }}</h1>
+        <h2 class="paragraph">{{ eal }}</h2>
+        <el-rate v-model="value" disabled text-color="#ff9900" score-template="{value}" />
+      </div>
     </div>
-    <div class="textspacing">
-      <h1 class="header">{{ title }}</h1>
-      <h2 class="paragraph">{{ eal }}</h2>
+    <div class="shopping-cart">
+      <button class="shopping-text">加入购物车</button>
     </div>
   </div>
 </template>
@@ -28,65 +34,82 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      value: 5
+    };
   },
 };
 </script>
-<style>
-.password-jkl {
-  background: #ffffff;
-  box-shadow: 0 -3px 6px 0 rgb(103 108 135 / 13%),
-    0 3px 6px 0 rgb(76 77 85 / 13%);
-  border-radius: 5.04px;
-  width: 100%;
-  height: 130px;
+<style lang="less">
+.imgsize {
+  padding: 12px;
+  border-radius: 30px;
+}
+
+.imgsize {
+  width: 104px;
+  height: 104px;
 }
 
 .paragraphcontent {
   display: flex;
-  justify-content: flex-start;
 }
 
-.desa {
-  border-radius: 30px;
-  padding: 20px;
-}
-
-.desa {
-  width: 100px;
-  height: 100px;
-}
-
-.textspacing {
-  padding-top: 1.3rem;
-}
-
-.textspacing {
-  height: 7rem;
-  width: 12rem;
-}
-
-.textspacing .header {
-  font-family: Helvetica;
+.el-rate__icon {
   font-size: 18px;
-  color: #333333;
-  font-weight: 400;
-  letter-spacing: 0;
+  color: #C0C4CC;
+  transition: .3s;
 }
 
-.textspacing .paragraph {
-  opacity: 0.6;
-  font-family: Helvetica;
-  font-size: 13.37px;
-  color: #333333;
-  font-weight: 400;
-  margin-right: 40px;
+.textspacing {
+  width: 57%;
+  height: 123px;
+  padding-top: 10px;
+
+  .header {
+    font-family: Helvetica;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .paragraph {
+    opacity: 0.6;
+    font-family: Helvetica;
+    font-size: 4.37px;
+    color: #333333;
+    letter-spacing: 0;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin-right: 12px;
+  }
 }
 
-.paragraph {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
+.shopping-cart {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.shopping-cart {
+  height: 31px;
+  text-align: center;
+  font-weight: 100;
+}
+
+.shopping-text {
+  border-top-left-radius: 20px;
+  background: #76C477;
+  border-bottom-right-radius: 20px;
+  color: white;
+  border: none;
+  padding-top: 6px;
+  display: flex;
+  justify-content: flex-end;
 }
 </style>

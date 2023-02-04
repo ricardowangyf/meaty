@@ -1,4 +1,5 @@
 <template>
+  <!-- 轮播图组件 -->
   <div class="rectangle">
     <div class="content">
       <h1 class="meatyname">多肉植物</h1>
@@ -17,14 +18,12 @@ export default {
 
 <style lang="less">
 .rectangle {
-  width: 98%;
-  height: 9.1rem;
-}
-.rectangle {
   box-shadow: 0 2px 4px 0 rgb(171 171 171 / 21%);
-  border-radius: 0.4rem;
+  border-radius: 5.04px;
   background-color: #f9d694;
   display: flex;
+  width: 98%;
+  height: 9.1rem;
   justify-content: space-between;
   .content {
     padding-left: 1rem;

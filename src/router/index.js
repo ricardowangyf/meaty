@@ -1,49 +1,46 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const HomePage = () => import('../view/HomePage.vue')
-const NotFound = () => import('../view/NotFound.vue')
-const HomeAll = () => import('../components/HomeAll.vue')
-const CommUnity = () => import('../view/CommUnity.vue')
-const shopcenter = () => import('../view/shopcenter.vue')
-
-
 export default new Router({
-    mode: 'history',
+    mode: 'hash',
     routes: [
         {
             path: '/',
-            component: HomePage,
+            component:  () => import('../view/HomePage.vue') ,
         },
         {
             path: '/HomeAll',
-            name: '/HomeAll',
-            component: HomeAll,
+            name: '/homeall',
+            component: () => import('../components/HomeAll.vue'),
         },
         {
-            name:'CommUnity',
-            path:'/CommUnity',
-            component: CommUnity
+            name: 'CommUnity',
+            path: '/community',
+            component: () => import('../view/CommUnity.vue')
         },
         {
-            name:'shopcenter',
-            path:'/shopcenter',
-            component: shopcenter
+            name: 'MeatyDetali',
+            path: '/meatydetali',
+            component: () => import ('../view/meatydetali.vue'),
+        },
+        {
+            name: 'shopcenter',
+            path: '/shopcenter',
+            component:  () => import('../view/shopcenter.vue'),
         },
         {
             path: '*',
             name: '404',
-            component: NotFound
+            component: () => import('../view/NotFound.vue')
         },
     ]
 })
-const originalPush = Router.prototype.push
 
+const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
-    console.log('===location====?',location)
-    return originalPush.call(this, location).catch(err =>{
-        console.log('==err======',err)    
-       return err
+    return originalPush.call(this, location).catch(err => {
+        return err
     })
 }
+
 Vue.use(Router);

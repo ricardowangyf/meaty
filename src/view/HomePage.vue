@@ -1,52 +1,36 @@
 <template>
+  <!-- 主页 -->
   <div class="body center">
     <div class="main">
       <div class="inputandcion">
-        <input
-          class="keyword"
-          laceholder="搜索你想要的产品"
-          v-model.trim="keyWord"
-        />
-        <button @click="serch">
-          <img class="hualigs" src="../assets/img/search.svg" alt="" />
+        <input v-model="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
+        <button class="sousuo" @click="serch">
+          <img class="hualigs" src="../assets/img/search.svg" alt />
+          <div class="claer" />
         </button>
       </div>
       <div class="centernow">
-        <!-- 轮播图 -->
         <RectAngle />
-        
-        <!-- 过滤按钮 -->
-        <Filterbutton />
-        
-        <li
-          v-for="(tableData, i) in tableData"
-          :key="tableData.name"
-          :class="
-            name === tableData.name || (i === 0 && !item.name)
-              ? 'router-link-exact-active'
-              : undefined
-          "
-          class="background"
-        >
-          <HomeAll
-            :title="tableData.name"
-            :des="tableData.imgurl"
-            :eal="tableData.paragraph"
-          />
-        </li>
+        <Filterbutton class="shadow" />
+        <div v-if="tableData && tableData.length > 0">
+          <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-assembly">
+            <router-link :to="`/${tableData.name}/detail/`">
+              <HomePagetwo :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
+            </router-link>
+          </li>
+        </div>
       </div>
-      <!-- 底部商品导航 -->
       <FooterPage />
     </div>
   </div>
 </template>
 
 <script>
-import HomeAll from "../components/HomeAll.vue"; //商品信息
+import HomePagetwo from "../components/HomePagetwo.vue"; //商品信息
 import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
-import RectAngle from "../components/rectangle.vue"; //过滤按钮
+import RectAngle from "../components/rectangle.vue"; //轮播图组件
 import FooterPage from "../components/Footer.vue"; //底部商品导航
-import { reqCategoryList } from "../API/index"; //轮播图
+import { reqCategoryList } from "../API/index";
 
 export default {
   name: "HomePage",
@@ -57,6 +41,7 @@ export default {
       item: [],
       name: " ",
       keyWord: " ",
+      meatyname: []
     };
   },
   mounted() {
@@ -66,7 +51,7 @@ export default {
     });
   },
   components: {
-    HomeAll,
+    HomePagetwo,
     FooterPage, //底部商品导航,
     Filterbutton, //过滤按钮,
     RectAngle,//轮播图
@@ -84,39 +69,37 @@ export default {
     },
   },
   methods: {
-    acivemeun() {},
     serch() {
       var dataLists = [];
       if (this.keyWord) {
         for (var i = 0; i < this.tableData.length; i++) {
           if (this.tableData[i].name === this.keyWord) {
             dataLists.push(this.tableData[i]);
+            console.log("this.tableData", this.tableData);
           }
         }
       } else {
         dataLists = this.tableData;
       }
-      this.item = [...dataLists];
-      console.log("this.item", this.item);
-      console.log("dataLists", dataLists);
+      this.items = [...dataLists];
+      console.log("this.items", this.items);
     },
     filterDatas(type, list) {
-      if (type === "sunflower") {
-        this.item = list.filter((item) => item.sunflower);
-      } else if (type === "cactus") {
-        this.item = list.filter((item) => item.cactus);
-      } else if (type === "greenpineapple") {
-        this.item = list.filter((item) => item.greenpineapple);
+      if (type === "trash") {
+        this.items = list.filter((item) => item.deleteAt);
+      } else if (type === "favorites") {
+        this.items = list.filter((item) => item.favorties);
       } else {
-        this.item = list;
+        this.items = list;
       }
-      console.log("this.item", this.item);
-      console.log("type", type);
-      this.item &&
-        this.item.length > 0 &&
-        this.$router.push(` `).catch((err) => {
-          console.log(err);
-        });
+      console.log("this.items", this.items);
+      console.log("type:", type);
+      this.tableData &&
+        this.tableData.length > 0 &&
+        this.$router
+          .catch((err) => {
+            console.log(err);
+          });
     },
   },
 };
@@ -139,12 +122,9 @@ a {
   text-decoration: none;
 }
 
-.body {
-  padding-top: 25px;
-}
-
-.inputandcion {
-  display: flex;
+.sousuo {
+  width: 28px;
+  height: 20px;
 }
 
 .router-link-exact-active {
@@ -153,49 +133,50 @@ a {
 }
 
 .inputandcion {
-  padding-left: 1rem;
-  padding-bottom: 2rem;
+  padding: 17px 0 17px 1rem;
+  display: flex;
+
   button {
     position: relative;
     right: 35px;
-    background: rgb(250, 250, 245);
+    background: #fafaf5;
     border: none;
     padding: 0;
+    height: 34px;
+    top: 3px;
   }
+
   .keyword {
     width: 20rem;
-    background: #fafaf5;
     border-radius: 5.76px;
     height: 2.5rem;
     border: none;
     outline: none;
+    background: #FAFAF5;
+    border-radius: 5.76px;
   }
 }
 
 .centernow {
-  margin-left: 0.9rem;
-  margin-right: 0.9rem;
+  margin: 0 1.9rem 6.5rem 1.9rem;
 
   .cactus {
     width: 8rem;
     height: 9.1rem;
   }
+
+  .plant-assembly {
+    margin-bottom: 2.9rem;
+    box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
+    border-radius: 5.04px;
+  }
 }
+
 .fontsize {
   font-size: 1rem;
   text-align: center;
   letter-spacing: 0;
   padding-top: 6px;
   opacity: 0.6;
-}
-
-.background {
-  background: #ffffff;
-  margin-bottom: 2rem;
-  box-shadow: 0 -3px 6px 0 rgb(82 84 91 / 13%),
-    0 3px 6px 0 rgb(106 108 118 / 13%);
-  border-radius: 5.04px;
-  width: 100%;
-  height: 9rem;
 }
 </style>
