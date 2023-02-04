@@ -9,6 +9,7 @@
       <div>
         {{ content }}</div>
     </ul>
+
   </div>
 </template>
 
@@ -63,9 +64,6 @@ export default {
     },
   },
   methods: {
-    filterDatas() {
-
-    },
     clickTab(e, content) {
       if (e == content) {
         // console.log(content);
@@ -77,7 +75,18 @@ export default {
         console.log(e)
       }
 
-    }
+    },
+    filterDatas(type, list) {
+      if (type === "greenpineapple") {
+        this.items = list.filter((tableData) => tableData.deleteAt);
+      } else if (type === "cactus") {
+        this.items = list.filter((tableData) => tableData.favorties);
+      } else {
+        this.items = list;
+      }
+      console.log("items", this.items);
+      console.log("type:  ", type);
+    },
   }
 };
 </script>
@@ -86,6 +95,10 @@ export default {
 .button-link {
   padding-top: 20px;
   padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 25px;
 
   .all {
     text-align: center;
@@ -107,6 +120,12 @@ export default {
     color: #333333;
     letter-spacing: 0;
     background: #F1F3F5;
+    font-size: 0.7rem;
+    letter-spacing: 0;
+    text-align: center;
+    opacity: 0.7;
+    color: #333333;
+    padding-top: 0.4rem;
   }
 
   .anotherbutton {
