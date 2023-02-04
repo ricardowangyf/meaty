@@ -1,17 +1,17 @@
 <template>
   <!-- 过滤按钮 -->
-  <div class="routerlink">
+  <div class="button-link">
     <router-link to="/all" class="anotherbutton router-link-exact-active">
-      <div class="fontsize">全部</div>
+      <div class="all">全部</div>
     </router-link>
-    <router-link to="/sunflower" class="xiangrikui">
-      <div class="anotherfontsize">向日葵</div>
+    <router-link to="/sunflower" class="buttontext-style">
+      <div class="plant-name">向日葵</div>
     </router-link>
-    <router-link to="/cactus" class="xiangrikui">
-      <div class="anotherfontsize">仙人掌</div>
+    <router-link to="/cactus" class="buttontext-style">
+      <div class="plant-name">仙人掌</div>
     </router-link>
-    <router-link to="/greenpineapple" class="xiangrikui">
-      <div class="anotherfontsize">绿萝</div>
+    <router-link to="/greenpineapple" class="buttontext-style">
+      <div class="plant-name">绿萝</div>
     </router-link>
   </div>
 </template>
@@ -59,35 +59,38 @@ export default {
 </script>
 
 <style lang="less">
-.routerlink {
+.button-link {
   display: flex;
   justify-content: space-between;
-  padding-top: 1.3rem;
-  padding-bottom: 1.3rem;
+  padding-top: 25px;
+  padding-bottom: 25px;
 
-  .fontsize {
+  .all {
     text-align: center;
+    font-weight: 300;
+    font-size: 0.9rem;
+    padding-top: 6px;
   }
 
-  .anotherfontsize {
-    font-size: 1rem;
+  .plant-name {
+    font-size: 0.7rem;
     letter-spacing: 0;
     text-align: center;
     opacity: 0.7;
     color: #333333;
-    padding-top: 0.3rem;
-  }
-
-  .anotherbutton {
-    border-radius: 1rem;
+    padding-top: 0.4rem;
   }
 
   .anotherbutton {
     width: 20%;
+    box-shadow: 0 4px 10px 0 rgb(76 110 245 / 37%);
+    border-radius: 19.8px;
     height: 2.1rem;
+    background: #4c6ef5;
+    color: #fff;
   }
 
-  .xiangrikui {
+  .buttontext-style {
     background: #f1f3f5;
     border-radius: 19.8px;
     width: 20%;

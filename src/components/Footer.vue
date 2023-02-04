@@ -1,6 +1,6 @@
 <template>
   <!-- 底部导航栏 -->
-  <div class="navigationbar">
+  <div class="navigation-bar">
     <router-link to="/" class="backgroundd">
       <div class="padding">
         <li>
@@ -9,7 +9,7 @@
         <li class="home">主页</li>
       </div>
     </router-link>
-    <router-link to="/commUnity" class="backgroundd">
+    <router-link to="/community" class="backgroundd">
       <div class="padding">
         <li>
           <img src="../assets/img/community.svg" />
@@ -33,7 +33,7 @@ export default {
 };
 </script>
 <style lang='less'>
-.navigationbar {
+.navigation-bar {
   position: fixed;
   bottom: 0;
   left: 0;

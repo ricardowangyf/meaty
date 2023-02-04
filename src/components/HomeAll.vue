@@ -1,6 +1,6 @@
 <template>
-  <!-- 多肉植物组件 -->
-  <div>
+  <!-- 详情多肉植物组件 -->
+  <div class="detali-plant">
     <div class="paragraphcontent">
       <div class="picture">
         <img :src="des" class="imgsize" />
@@ -11,8 +11,8 @@
         <el-rate v-model="value" disabled text-color="#ff9900" score-template="{value}" />
       </div>
     </div>
-    <div class="buttondiv">
-      <button class="flexend">加入购物车</button>
+    <div class="shopping-cart">
+      <button class="shopping-text">加入购物车</button>
     </div>
   </div>
 </template>
@@ -62,9 +62,9 @@ export default {
 }
 
 .textspacing {
-  width: 9.8rem;
-  height: 6.6rem;
-  padding-top: 1rem;
+  width: 57%;
+  height: 123px;
+  padding-top: 10px;
 
   .header {
     font-family: Helvetica;
@@ -87,30 +87,28 @@ export default {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
+    margin-right: 12px;
   }
 }
 
-.buttondiv {
+.shopping-cart {
   display: flex;
   justify-content: flex-end;
 }
 
-.buttondiv {
+.shopping-cart {
   height: 31px;
   text-align: center;
   font-weight: 100;
 }
 
-.flexend {
+.shopping-text {
   border-top-left-radius: 20px;
   background: #76C477;
   border-bottom-right-radius: 20px;
   color: white;
   border: none;
   padding-top: 6px;
-}
-
-.flexend {
   display: flex;
   justify-content: flex-end;
 }

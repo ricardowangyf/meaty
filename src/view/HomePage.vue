@@ -3,7 +3,7 @@
   <div class="body center">
     <div class="main">
       <div class="inputandcion">
-        <input v-model="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword"/>
+        <input v-model="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
         <button class="sousuo" @click="serch">
           <img class="hualigs" src="../assets/img/search.svg" alt />
           <div class="claer" />
@@ -11,17 +11,14 @@
       </div>
       <div class="centernow">
         <RectAngle />
-        <Filterbutton />
-        <router-link to="/">
-          <li v-for="(tableData,i) in tableData" :key="tableData.name" class="background"
-            :class="
-              name === tableData.name || (i === 0 && !name)
-                ? 'isActive'
-                : undefined
-            ">
-            <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
+        <Filterbutton class="shadow" />
+        <div v-if="tableData && tableData.length > 0">
+          <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-assembly">
+            <router-link :to="`/${tableData.name}/detail/`">
+              <HomePagetwo :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
+            </router-link>
           </li>
-        </router-link>
+        </div>
       </div>
       <FooterPage />
     </div>
@@ -29,11 +26,11 @@
 </template>
 
 <script>
-import HomeAll from "../components/HomeAll.vue"; //商品信息
+import HomePagetwo from "../components/HomePagetwo.vue"; //商品信息
 import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
 import RectAngle from "../components/rectangle.vue"; //轮播图组件
 import FooterPage from "../components/Footer.vue"; //底部商品导航
-import { reqCategoryList } from "../API/index"; //轮播图
+import { reqCategoryList } from "../API/index";
 
 export default {
   name: "HomePage",
@@ -44,6 +41,7 @@ export default {
       item: [],
       name: " ",
       keyWord: " ",
+      meatyname: []
     };
   },
   mounted() {
@@ -53,7 +51,7 @@ export default {
     });
   },
   components: {
-    HomeAll,
+    HomePagetwo,
     FooterPage, //底部商品导航,
     Filterbutton, //过滤按钮,
     RectAngle,//轮播图
@@ -125,18 +123,9 @@ a {
   text-decoration: none;
 }
 
-.body {
-  padding-top: 25px;
-}
-
-
 .sousuo {
   width: 28px;
   height: 20px;
-}
-
-.inputandcion {
-  display: flex;
 }
 
 .router-link-exact-active {
@@ -145,8 +134,8 @@ a {
 }
 
 .inputandcion {
-  padding-left: 1rem;
-  padding-bottom: 2rem;
+  padding: 17px 0 17px 1rem;
+  display: flex;
 
   button {
     position: relative;
@@ -177,14 +166,16 @@ a {
     height: 9.1rem;
   }
 
-  .background {
-    background: #ffffff;
-    margin-top: 1.8rem;
-    box-shadow: 0px 18px 12px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
+  .plant-assembly {
+    margin-bottom: 2.9rem;
+    box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
   }
 }
 
+// .shadow{
+//   box-shadow: 0px 18px 12px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
+// }
 .fontsize {
   font-size: 1rem;
   text-align: center;

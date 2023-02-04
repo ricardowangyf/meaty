@@ -1,55 +1,83 @@
 <template>
-  <!--多肉植物详情-->
-  <div class="middleheader">
-    <div class="middleheader-center scorall">
-      <div class="middlecenter">
-        <div class="button">
-          <div v-if="items && items.length > 0">
-            <li v-for="(tableData, i) in items" :key="tableData.name">
-              <router-link :to="`/shopcenter/${type}`">
-                <HomeAll :title="tableData.name" :des="tableData.email" :eal="tableData.url" :class="
-  name === tableData.name || (i === 0 && !name)
-    ? 'isactive'
-    : undefined
-                " />
-              </router-link>
-            </li>
-          </div>
+  <div>
+    <div class="Header">
+      <img src="../assets/img/flower.jpg" />
+      <div class="headerall">
+        <a href="./HomePage.vue">
+          <img src="../assets/img/left.svg" class="fanhui" />
+        </a>
+        <div class="divv">
+          <h1 class="detalis">详情</h1>
+          {{detali.name}}
         </div>
       </div>
+    </div>
+    <div class="body">
+    <div>
+    <h1>{{name}}</h1>
+    </div>
     </div>
   </div>
 </template>
 
 <script>
-import { meatydetali } from "../API/index";
-import HomeAll from "../components/HomeAll.vue";
-// 在此处引用button组件
+
+import { detali } from "../API/index"; 
+
 
 export default {
-  props: ["type"],
-  name: "reqCategoryList",
-  components: {
-    HomeAll,
-  },
+  name: 'MeatyDetali',
   data() {
     return {
-      items: [],
-      name: "",
-      keyWord: " ",
-      SearchVault: "SearchVault",
-      tableData: []
-    };
+      detali:[],
+      name: " ",
+    }
   },
   mounted() {
-    meatydetali().then((data) => {
-      this.tableData = data.data;
-      console.log("---> ", this.tableData);
+    detali().then((data) => {
+      this.detali = data.data;
+      console.log("-detali--> ", this.detali);
     });
   },
-};
+}
 </script>
+<style lang="less">
+img {
+  width: 100%;
+}
 
-<style>
+.detalis {
+  font-family: Helvetica;
+  font-size: 20.82px;
+  color: #333333;
+  letter-spacing: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 300;
+}
 
+.fanhui {
+  width: 32px;
+  height: 26px;
+  position: relative;
+  right: 132px;
+}
+
+.headerall {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 356px;
+}
+
+.divv {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  right: 20px;
+}
+
+.body {
+  border-radius: 50%;
+}
 </style>

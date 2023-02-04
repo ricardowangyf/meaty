@@ -2,13 +2,9 @@
   <!-- 商城页面 -->
   <div class="juzhong">
     <Filterbutton />
-    <div class="jianju">
-      <li v-for="(tableData, i) in tableData" :key="tableData.name" :class="
-        name === tableData.name || (i === 0 && !item.name)
-          ? 'router-link-exact-active'
-          : undefined
-      " class="background">
-        <router-link :to="`/shopcenter/${tableData.name}`">
+    <div class="plant-details">
+      <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-details">
+        <router-link :to="`/${tableData.name}/detalis`">
           <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
         </router-link>
       </li>
@@ -58,14 +54,9 @@ a {
 .juzhong {
   margin: 0 25px 0 25px;
 
-  .jianju {
-    margin-bottom: 8.5rem;
-  }
-
-  .background {
-    background: #ffffff;
-    margin-top: 1.8rem;
-    box-shadow: 0px 18px 12px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
+  .plant-details {
+    margin-bottom: 2.5rem;
+    box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
   }
 
@@ -77,15 +68,6 @@ a {
     left: 239px;
     border-top-left-radius: 22px;
     height: 22px;
-
-    .gouwuche {
-      margin: 0;
-      font-family: Helvetica;
-      font-size: 5.1px;
-      color: #ffffff;
-      letter-spacing: 0;
-      text-align: right;
-    }
   }
 }
 </style>
