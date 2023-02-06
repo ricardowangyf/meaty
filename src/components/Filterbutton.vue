@@ -3,13 +3,10 @@
   <!-- 过滤按钮 -->
   <div class="button-link">
     <ul class="buttonstyle">
-      <li  @click="clickTab(index)" v-for="(item,index) in tabList" :key="index" class="plant-name">{{
-  item.name
-}} </li>
-      <div>
-        {{ content }}</div>
+      <li @click="clickTab(index)" v-for="(item,index) in tabList" :key="index" class="plant-name">
+        {{ item.name }}
+      </li>
     </ul>
-
   </div>
 </template>
 
@@ -66,11 +63,9 @@ export default {
   methods: {
     clickTab(e, content) {
       if (e == content) {
-        // console.log(content);
         this.content = 'aefwergeqrgheqhrgqethqahrt'
       }
       else {
-        // console.log(content);
         this.content = 'swergewrg egr erg'
         console.log(e)
       }
@@ -85,7 +80,6 @@ export default {
         this.items = list;
       }
       console.log("items", this.items);
-      console.log("type:  ", type);
     },
   }
 };
@@ -93,12 +87,7 @@ export default {
 
 <style lang="less">
 .button-link {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding: 25px 0 25px 0;
 
   .all {
     text-align: center;
@@ -109,23 +98,16 @@ export default {
 
   .plant-name {
     text-align: center;
-    opacity: 0.7;
     color: #333333;
-    padding-top: 0.2rem;
     box-shadow: 0 4px 10px 0 rgb(76 110 245 / 37%);
     border-radius: 19.8px;
     width: 20%;
-    opacity: 0.7;
-    font-size: 4.37px;
-    color: #333333;
     letter-spacing: 0;
     background: #F1F3F5;
     font-size: 0.7rem;
-    letter-spacing: 0;
-    text-align: center;
     opacity: 0.7;
-    color: #333333;
     padding-top: 0.4rem;
+    height: 24px;
   }
 
   .anotherbutton {
@@ -138,10 +120,10 @@ export default {
   }
 
   .buttonstyle {
-    display: flex;
-    justify-content: space-between;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: space-between;
   }
 
   .buttontext-style {
