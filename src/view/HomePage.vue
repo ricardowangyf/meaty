@@ -19,10 +19,11 @@
           </ul>
         </div>
         <div v-if="tableData && tableData.length > 0">
-          <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-assembly">
-            <router-link :to="`/${tableData.name}/detail/`">
+          <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-assembly" @click="button()">
+            <!-- <router-link :to="`/detail/${tableData.name}/`">
               <HomePagetwo :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
-            </router-link>
+            </router-link> -->
+            <HomePagetwo :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
           </li>
         </div>
       </div>
@@ -93,6 +94,11 @@ export default {
     },
   },
   methods: {
+    button(){
+      this.$router.push({
+        path:'/detail',
+      })
+    },
     serch() {
       var dataLists = [];
       if (this.keyWord) {
@@ -106,6 +112,7 @@ export default {
         dataLists = this.tableData;
       }
       this.items = [...dataLists];
+      this.tableData = this.items;
       console.log("this.items", this.items);
     },
     filterDatas(type, list) {

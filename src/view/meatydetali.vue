@@ -8,34 +8,65 @@
         </a>
         <div class="divv">
           <h1 class="detalis">详情</h1>
-          {{detali.name}}
         </div>
       </div>
     </div>
     <div class="body">
-    <div>
-    <h1>{{name}}</h1>
-    </div>
+      <div style="
+    font-family: Helvetica;
+    font-size: 19.82px;
+    color: #333333;
+    letter-spacing: 0;
+">
+        {{ detali.name }}
+      </div>
+      <div>
+        {{ introduce }}
+      </div>
+      <div style="
+    opacity: 0.58;
+    font-family: Helvetica;
+    font-size: 15.3px;
+    color: #333333;
+    letter-spacing: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    overflow: hidden;
+">
+        {{ detali.Productintroduction }}
+        <button @click="open()">{{ mess }}</button>
+
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 
-import { detali } from "../API/index"; 
+import { meatydetali } from "../API/index";
 
 
 export default {
   name: 'MeatyDetali',
   data() {
     return {
-      detali:[],
+      detali: {},
       name: " ",
+      introduce: '商品介绍',
+      mess: '查看更多',
+      lookMore: true,
     }
   },
+  methdos: {
+    open(leg) {
+      this.lookMore = false
+      this.detali = leg
+    },
+  },
   mounted() {
-    detali().then((data) => {
-      this.detali = data.data;
+    meatydetali().then((data) => {
+      this.detali = data.data[0];
       console.log("-detali--> ", this.detali);
     });
   },
@@ -79,5 +110,7 @@ img {
 
 .body {
   border-radius: 50%;
+  margin-left: 34px;
+  margin-right: 34px;
 }
 </style>

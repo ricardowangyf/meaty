@@ -6,7 +6,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component:  () => import('../view/HomePage.vue') ,
+            component: () => import('../view/HomePage.vue'),
         },
         {
             path: '/HomeAll',
@@ -17,16 +17,21 @@ export default new Router({
             name: 'CommUnity',
             path: '/community',
             component: () => import('../view/CommUnity.vue')
+        }, 
+        {
+            name: '/detail',
+            path: '/detail',
+            component: () => import('../view/meatydetali.vue')
         },
         {
             name: 'MeatyDetali',
             path: '/meatydetali',
-            component: () => import ('../view/meatydetali.vue'),
+            component: () => import('../view/meatydetali.vue'),
         },
         {
             name: 'shopcenter',
             path: '/shopcenter',
-            component:  () => import('../view/shopcenter.vue'),
+            component: () => import('../view/shopcenter.vue'),
         },
         {
             path: '*',
