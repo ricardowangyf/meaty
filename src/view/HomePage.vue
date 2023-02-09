@@ -20,9 +20,6 @@
         </div>
         <div v-if="tableData && tableData.length > 0">
           <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-assembly" @click="button()">
-            <!-- <router-link :to="`/detail/${tableData.name}/`">
-              <HomePagetwo :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
-            </router-link> -->
             <HomePagetwo :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
           </li>
         </div>
@@ -34,7 +31,6 @@
 
 <script>
 import HomePagetwo from "../components/HomePagetwo.vue"; //商品信息
-// import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
 import RectAngle from "../components/rectangle.vue"; //轮播图组件
 import FooterPage from "../components/Footer.vue"; //底部商品导航
 import { reqCategoryList } from "../API/index";
@@ -78,7 +74,6 @@ export default {
   components: {
     HomePagetwo,
     FooterPage, //底部商品导航,
-    // Filterbutton, //过滤按钮,
     RectAngle,//轮播图
   },
   watch: {
