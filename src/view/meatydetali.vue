@@ -22,7 +22,19 @@
       </div>
       <div class="paragraph">
         {{ detali.Productintroduction }}
-        <button @click="open()">{{ mess }}</button>
+      </div>
+      <div class="button">
+        <button @click="open()" class="bottoncontant">{{ mess }}</button>
+      </div>
+      <div class="flex">
+        <div class="count-c clearfix">
+          <button class="reduce">-</button>
+          <input type="text" value="1" class="textinput">
+          <button class="add">+</button>
+        </div>
+        <div>
+          <button class="jiesuan">{{ esee }}</button>
+        </div>
       </div>
     </div>
   </div>
@@ -41,6 +53,7 @@ export default {
       name: " ",
       introduce: '商品介绍',
       mess: '查看更多',
+      esee: '结算订单',
       lookMore: true,
       value: 5
     }
@@ -57,6 +70,22 @@ export default {
       console.log("-detali-> ", this.detali);
     });
   },
+  watch: {
+    $route: {
+      handler(newVal) {
+        newVal && this.getdetail();
+        console.log("newVal", newVal);
+      },
+    },
+    getdetail() {
+      const name = this.$route.params && this.$route.params.name;
+      name &&
+        meatydetali({ name }).then((data) => {
+          this.details = data.data;
+          console.log("this.details", this.details);
+        });
+    },
+  },
 }
 </script>
 <style lang="less">
@@ -72,7 +101,11 @@ img {
   height: 250px;
   background-size: 100% 390px;
   background-repeat: no-repeat;
-  background-image: url(http://localhost:8080/img/flower.54c6e2b2.jpg);
+  background-image: url(../assets/img/flower.jpg);
+}
+
+.button {
+  padding-top: 50px;
 }
 
 .detalis {
@@ -140,5 +173,105 @@ img {
   margin-left: 34px;
   margin-right: 34px;
   margin-top: 20px;
+}
+
+tbody .count-c {
+  width: 98px;
+  margin: 0 auto;
+}
+
+.clearfix::before,
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+tbody .add,
+tbody .reduce {
+  float: left;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ccc;
+  text-align: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+tbody input[type='text'] {
+  width: 50px;
+  float: left;
+  height: 18px;
+  text-align: center;
+}
+
+tbody .add,
+tbody .reduce {
+  float: left;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ccc;
+  text-align: center;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.textinput {
+  text-align: center;
+  background: #FFFFFF;
+  box-shadow: 0 -3px 6px 0 rgb(173 174 179 / 17%), 0 3px 6px 0 rgb(173 174 179 / 17%);
+  border-radius: 5.04px;
+  border: none;
+  width: 100px;
+  height: 50px;
+}
+
+.add {
+  width: 0;
+  height: 0;
+  background: #fff;
+  border: none;
+  position: relative;
+  right: 25px;
+}
+
+.reduce {
+  width: 0;
+  height: 0;
+  background: #fff;
+  border: none;
+  position: relative;
+  left: 12px;
+}
+
+.bottoncontant {
+  font-family: Helvetica;
+  font-size: 5.1px;
+  color: #82C91E;
+  letter-spacing: 0;
+  padding: 0;
+  background: #fff;
+  border: none;
+}
+
+
+.jiesuan {
+  background: #76C477;
+  width: 147px;
+  height: 50px;
+  border: 0.18px solid rgba(120, 189, 23, 0.39);
+  box-shadow: 0 4px 10px 0 rgba(118, 196, 119, 0.39);
+  border-radius: 3.6px;
+  font-family: Helvetica;
+  font-size: 5.82px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

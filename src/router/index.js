@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 export default new Router({
     mode: 'hash',
+    linkActiveClass: 'isactive',
     routes: [
         {
             path: '/',

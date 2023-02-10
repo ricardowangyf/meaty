@@ -79,7 +79,7 @@ export default {
       } else {
         this.items = list;
       }
-      console.log("items", this.items);
+      // console.log("items", this.items);
     },
   }
 };
