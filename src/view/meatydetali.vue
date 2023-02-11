@@ -12,38 +12,41 @@
       </div>
     </div>
     <div class="meatybody">
-      <div class="detaliname">
-        {{ detali.name }}
-      </div>
-      <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}" class="el-rate__icon">
-      </el-rate>
-      <div class="spreadout">
-        {{ introduce }}
-      </div>
-      <div class="paragraph">
-        {{ detali.Productintroduction }}
-      </div>
-      <div class="button">
-        <button @click="open()" class="bottoncontant">{{ mess }}</button>
-      </div>
-      <div class="flex">
-        <div class="count-c clearfix">
-          <button class="reduce">-</button>
-          <input type="text" value="1" class="textinput">
-          <button class="add">+</button>
+      <div class="padddding">
+        <div class="detaliname">
+          {{ detali.name }}
+        </div>
+        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}"
+          class="el-rate__icon">
+        </el-rate>
+        <div class="spreadout">
+          {{ introduce }}
+        </div>
+        <div class="paragraph">
+          {{ detali.Productintroduction }}
         </div>
         <div>
-          <button class="jiesuan">{{ esee }}</button>
+          <div class="button">
+            <button @click="open()" class="bottoncontant">{{ mess }}</button>
+          </div>
+          <img src="../assets/img/bottom.svg" class="icon-login" />
+        </div>
+        <div class="flex">
+          <div class="count-c clearfix">
+            <button class="reduce">-</button>
+            <input type="text" value="1" class="textinput">
+            <button class="add">+</button>
+          </div>
+          <div>
+            <button class="jiesuan">{{ esee }}</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-
-import { meatydetali } from "../API/index";
-
+import { details } from "../API/index";
 
 export default {
   name: 'MeatyDetali',
@@ -63,9 +66,10 @@ export default {
       this.lookMore = false
       this.detali = leg
     },
+
   },
   mounted() {
-    meatydetali().then((data) => {
+    details().then((data) => {
       this.detali = data.data[0];
       console.log("-detali-> ", this.detali);
     });
@@ -80,7 +84,7 @@ export default {
     getdetail() {
       const name = this.$route.params && this.$route.params.name;
       name &&
-        meatydetali({ name }).then((data) => {
+        details({ name }).then((data) => {
           this.details = data.data;
           console.log("this.details", this.details);
         });
@@ -97,6 +101,10 @@ img {
   clear: both;
 }
 
+/*a {
+  text-decoraction: none;
+}*/
+
 .header-detali {
   height: 250px;
   background-size: 100% 390px;
@@ -104,8 +112,13 @@ img {
   background-image: url(../assets/img/flower.jpg);
 }
 
+.padddding {
+  padding-top: 20px;
+}
+
 .button {
-  padding-top: 50px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .detalis {
@@ -169,10 +182,7 @@ img {
 }
 
 .meatybody {
-  border-radius: 50%;
-  margin-left: 34px;
-  margin-right: 34px;
-  margin-top: 20px;
+  background: #fff;
 }
 
 tbody .count-c {
