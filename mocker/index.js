@@ -1,11 +1,12 @@
 const delay = require('mocker-api/lib/delay');
 const noProxy = process.env.NO_PROXY === 'true';
-const meatydetalis = require('./meatydetalis');
-const name = require('./name');
+// const meatydetalis = require('./meatydetalis');
+const detalis = require('./detalis');
 
 const proxy = {
-    ...name,
-    ...meatydetalis,
+
+    ...detalis,
+    // ...meatydetalis,
 
     'GET /api/user/': [
         {

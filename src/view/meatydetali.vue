@@ -25,11 +25,10 @@
         <div class="paragraph">
           {{ detali.Productintroduction }}
         </div>
-        <div>
+        <div class="footer">
           <div class="button">
-            <button @click="open()" class="bottoncontant">{{ mess }}</button>
+            <button class="bottoncontant" id="more">{{ mess }}</button>
           </div>
-          <img src="../assets/img/bottom.svg" class="icon-login" />
         </div>
         <div class="flex">
           <div class="count-c clearfix">
@@ -46,7 +45,7 @@
   </div>
 </template>
 <script>
-import { details } from "../API/index";
+import { meatydetali } from "../API/index";
 
 export default {
   name: 'MeatyDetali',
@@ -67,9 +66,10 @@ export default {
       this.detali = leg
     },
 
+
   },
   mounted() {
-    details().then((data) => {
+    meatydetali().then((data) => {
       this.detali = data.data[0];
       console.log("-detali-> ", this.detali);
     });
@@ -84,7 +84,7 @@ export default {
     getdetail() {
       const name = this.$route.params && this.$route.params.name;
       name &&
-        details({ name }).then((data) => {
+        meatydetali({ name }).then((data) => {
           this.details = data.data;
           console.log("this.details", this.details);
         });
@@ -101,10 +101,6 @@ img {
   clear: both;
 }
 
-/*a {
-  text-decoraction: none;
-}*/
-
 .header-detali {
   height: 250px;
   background-size: 100% 390px;
@@ -114,11 +110,6 @@ img {
 
 .padddding {
   padding-top: 20px;
-}
-
-.button {
-  padding-top: 25px;
-  padding-bottom: 25px;
 }
 
 .detalis {
@@ -143,9 +134,20 @@ img {
   letter-spacing: 0;
 }
 
+.icon-login {
+  width: 20px;
+  height: 20px;
+}
+
 .spreadout {
   margin-top: 20px;
   margin-bottom: 15px;
+}
+
+.footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
 }
 
 .towardsleft {
@@ -160,14 +162,13 @@ img {
   letter-spacing: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 8;
   overflow: hidden;
 
 }
 
 .el-rate__icon {
   font-size: 18px;
-  /* margin-right: 6px; */
   color: #C0C4CC;
   transition: .3s;
 }
@@ -182,6 +183,8 @@ img {
 }
 
 .meatybody {
+  margin-left: 25px;
+  margin-right: 25px;
   background: #fff;
 }
 
@@ -258,7 +261,7 @@ tbody .reduce {
 
 .bottoncontant {
   font-family: Helvetica;
-  font-size: 5.1px;
+  font-size: 16.1px;
   color: #82C91E;
   letter-spacing: 0;
   padding: 0;
