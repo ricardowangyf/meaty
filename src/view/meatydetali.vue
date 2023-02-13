@@ -14,7 +14,7 @@
     <div class="meatybody">
       <div class="padddding">
         <div class="detaliname">
-          {{ detali.name }}
+          {{ details.name }}
         </div>
         <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}"
           class="el-rate__icon">
@@ -23,7 +23,7 @@
           {{ introduce }}
         </div>
         <div class="paragraph">
-          {{ detali.Productintroduction }}
+          {{ details.Productintroduction }}
         </div>
         <div class="footer">
           <div class="button">
@@ -51,7 +51,7 @@ export default {
   name: 'MeatyDetali',
   data() {
     return {
-      detali: {},
+      details: {},
       name: " ",
       introduce: '商品介绍',
       mess: '查看更多',
@@ -60,35 +60,60 @@ export default {
       value: 5
     }
   },
-  methdos: {
-    open(leg) {
-      this.lookMore = false
-      this.detali = leg
-    },
-
-
-  },
   mounted() {
-    meatydetali().then((data) => {
-      this.detali = data.data[0];
-      console.log("-detali-> ", this.detali);
-    });
+    this.getdetail();
   },
   watch: {
     $route: {
       handler(newVal) {
-        newVal && this.getdetail();
         console.log("newVal", newVal);
+        newVal && this.getdetail();
       },
     },
+  },
+  methods: {
     getdetail() {
       const name = this.$route.params && this.$route.params.name;
       name &&
-        meatydetali({ name }).then((data) => {
+      meatydetali({ name }).then((data) => {
           this.details = data.data;
           console.log("this.details", this.details);
         });
     },
+    filterDatas(type, list) {
+      if (type === "sunflower") {
+        this.detali = list.filter((item) => item.deleteAt);
+      } else if (type === "deleteAt") {
+        this.detali = list.filter((item) => item.favorties);
+      } else {
+        this.detali = list;
+      }
+      console.log("this.itexms", this.detali);
+      console.log("type:  ", type);
+      this.detali &&
+        this.detali.length > 0 &&
+        this.$router
+          .push(`/detail`)
+          .catch((err) => {
+            console.log(err);
+          });
+    },
+    // serch() {
+    //   var dataLists = [];
+    //   if (this.keyWord) {
+    //     for (var i = 0; i < this.tableData.length; i++) {
+    //       if (this.tableData[i].name === this.keyWord) {
+    //         dataLists.push(this.tableData[i]);
+    //         console.log("this.tableData", this.tableData);
+    //       }
+    //     }
+    //   } else {
+    //     dataLists = this.tableData;
+    //   }
+    //   this.items = [...dataLists];
+    //   console.log("this.items", this.items);
+    //   console.log("dataLists", dataLists);
+    // },
   },
 }
 </script>
