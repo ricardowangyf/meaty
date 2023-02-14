@@ -1,13 +1,15 @@
 const delay = require('mocker-api/lib/delay');
 const noProxy = process.env.NO_PROXY === 'true';
-const meatydetalis = require('./meatydetalis');
+// const meatydetalis = require('./meatydetalis');
 const detalis = require('./detalis');
 const user = require('./data');
+console.log('-----:>', detalis);
 const proxy = {
+
 
     ...user,
     ...detalis,
-    ...meatydetalis,
+    // ...meatydetalis,
 
     'GET /api/user/': [
         {
@@ -22,7 +24,7 @@ const proxy = {
             "name": "仙人掌",
             "imgurl": "/img/Succulentplants.jpg",
             "paragraph": "多肉植物也叫多水植物、肉质植物,是指植物器官的茎或叶或根具有发达的薄壁组织用以贮藏水分,在外形上显得肥厚多汁的一类植物。",
-            "sunflower": true,
+            "favorties": true,
             "deleteAt": "2022/12/01",
         },
         {

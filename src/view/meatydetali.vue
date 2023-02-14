@@ -81,7 +81,7 @@ export default {
         });
     },
     filterDatas(type, list) {
-      if (type === "sunflower") {
+      if (type === "Trash") {
         this.detali = list.filter((item) => item.deleteAt);
       } else if (type === "deleteAt") {
         this.detali = list.filter((item) => item.favorties);
@@ -90,13 +90,13 @@ export default {
       }
       console.log("this.itexms", this.detali);
       console.log("type:  ", type);
-      this.detali &&
-        this.detali.length > 0 &&
-        this.$router
-          .push(`/detail`)
-          .catch((err) => {
-            console.log(err);
-          });
+      // this.detali &&
+      //   this.detali.length > 0 &&
+      //   this.$router
+      //     .push(`/detail`)
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
     },
     // serch() {
     //   var dataLists = [];

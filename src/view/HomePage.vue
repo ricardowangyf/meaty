@@ -2,7 +2,7 @@
   <!-- 主页 -->
   <div class="body center">
     <div class="main">
-    <!-- {{this.items}} -->
+      <!-- {{this.items}} -->
       <div class="inputandcion">
         <input v-model="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
         <button class="sousuo" @click="serch">
@@ -16,7 +16,7 @@
           <ul class="buttonstyle">
             <li @click="clickTab(index, items)" v-for="(items, index) in tabList" :key="index" class="plant-name"
               :class="{ active: currentIndex === index }">
-              {{ tableData.name }}
+              {{ items.name }}
             </li>
           </ul>
         </div>
@@ -44,7 +44,7 @@ export default {
     return {
       tableData: [],
       item: [],
-      items:[],
+      items: [],
       name: " ",
       keyWord: " ",
       tabList: [
@@ -68,9 +68,9 @@ export default {
       content: 'fdgfdgffdgfd',
     };
   },
-  mounted() {
-    this.getList()
-  },
+  // mounted() {
+  //   this.getdetail()
+  // },
   components: {
     HomePagetwo,
     FooterPage, //底部商品导航,
@@ -89,19 +89,26 @@ export default {
     },
   },
   methods: {
-    getList(sunflower) {
-      meatydetali().then((data) => {
-        if (sunflower) {
-          this.tableData = data.data.filter(e => e.sunflower === sunflower)
-        } else {
-          this.tableData = data.data;
-        }
-        const type = this.$route.params.type || "all";
-        this.filterDatas(type, data.data);
-        console.log("this.tableData", data.data);
-      });
-
+    getdetail() {
+      const name = this.$route.params && this.$route.params.name;
+      name &&
+        meatydetali({ name }).then((data) => {
+          this.details = data.data;
+          console.log("this.details", this.details);
+        });
     },
+    // getList(sunflower) {
+    //   meatydetali().then((data) => {
+    //     if (sunflower) {
+    //       this.tableData = data.data.filter(e => e.sunflower === sunflower)
+    //     } else {
+    //       this.tableData = data.data;
+    //     }
+    //     const type = this.$route.params.type || "all";
+    //     this.filterDatas(type, data.data);
+    //     console.log("-------->this.tableData", this.tableData );
+    //   });
+    // },
     button(item) {
       this.$router.push({
         path: '/detail',
@@ -129,19 +136,19 @@ export default {
       // console.log("this.items", this.items);
     },
     filterDatas(type, list) {
-      if (type === "trash") {
+      if (type === "Trash") {
         this.items = list.filter((item) => item.deleteAt);
       } else if (type === "favorites") {
         this.items = list.filter((item) => item.favorties);
       } else {
         this.items = list;
       }
-      console.log("type:  ", type);
-      console.log("this.items", this.items);
+      // console.log("type:  ", type);
+      // console.log("this.items", this.items);
     },
     clickTab(index, item) {
       this.currentIndex = index
-      this.getList(item.name)
+      this.getdetail(item.name)
     },
   },
 };
