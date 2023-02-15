@@ -4,7 +4,7 @@
     <div class="main">
       <!-- {{this.items}} -->
       <div class="inputandcion">
-        <input v-model="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
+        <input v-model.trim="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
         <button class="sousuo" @click="serch">
           <img class="hualigs" src="../assets/img/search.svg" alt />
           <div class="claer" />
@@ -25,6 +25,22 @@
             <HomePagetwo :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
           </li>
         </div>
+        <!-- <div class="button">
+          <div v-if="items && items.length > 0">
+            <li v-for="(item,index) in items" :key="item.name" class="plant-assembly" @click="button(item)">
+              <router-link :to="`${type}/detail/${item.name}`">
+                <HomePagetwo
+                :title="item.name" :des="item.imgurl" :eal="item.paragraph" 
+                   :class="
+                    name === item.name || (index === 0 && !name)
+                      ? 'isactive'
+                      : undefined
+                  "
+                />
+              </router-link>
+            </li>
+          </div>
+        </div> -->
       </div>
       <FooterPage />
     </div>
@@ -32,7 +48,7 @@
 </template>
 
 <script>
-import { meatydetali } from "../API/index";
+import { reqCategoryList } from "../API/index";
 import HomePagetwo from "../components/HomePagetwo.vue"; //商品信息
 import RectAngle from "../components/rectangle.vue"; //轮播图组件
 import FooterPage from "../components/Footer.vue"; //底部商品导航
@@ -43,7 +59,6 @@ export default {
   data() {
     return {
       tableData: [],
-      item: [],
       items: [],
       name: " ",
       keyWord: " ",
@@ -68,9 +83,15 @@ export default {
       content: 'fdgfdgffdgfd',
     };
   },
-  // mounted() {
-  //   this.getdetail()
-  // },
+  mounted() {
+    // this.getList()
+    reqCategoryList().then((data) => {
+      this.tableData = data.data;
+      const type = this.$route.params.type || "all";
+      this.filterDatas(type, data.data);
+      console.log("this.tableData", this.tableData);
+    });
+  },
   components: {
     HomePagetwo,
     FooterPage, //底部商品导航,
@@ -89,16 +110,8 @@ export default {
     },
   },
   methods: {
-    getdetail() {
-      const name = this.$route.params && this.$route.params.name;
-      name &&
-        meatydetali({ name }).then((data) => {
-          this.details = data.data;
-          console.log("this.details", this.details);
-        });
-    },
     // getList(sunflower) {
-    //   meatydetali().then((data) => {
+    //   reqCategoryList().then((data) => {
     //     if (sunflower) {
     //       this.tableData = data.data.filter(e => e.sunflower === sunflower)
     //     } else {
@@ -106,7 +119,7 @@ export default {
     //     }
     //     const type = this.$route.params.type || "all";
     //     this.filterDatas(type, data.data);
-    //     console.log("-------->this.tableData", this.tableData );
+    //     // console.log("this.tableData", data.data);
     //   });
     // },
     button(item) {
@@ -116,9 +129,10 @@ export default {
           'name': item.name
         }
       }),
-        this.showData = !this.showData;
+      this.showData = !this.showData;
       this.HomePagetwo = this.dataToShow;
     },
+    //搜索
     serch() {
       var dataLists = [];
       if (this.keyWord) {
@@ -133,22 +147,24 @@ export default {
       }
       this.items = [...dataLists];
       this.tableData = this.items;
-      // console.log("this.items", this.items);
+      console.log("------:>this.tableData", this.items);
     },
+    //过滤
     filterDatas(type, list) {
       if (type === "Trash") {
-        this.items = list.filter((item) => item.deleteAt);
+        this.tableData = list.filter((item) => item.deleteAt);
       } else if (type === "favorites") {
-        this.items = list.filter((item) => item.favorties);
+        this.tableData = list.filter((item) => item.favorties);
       } else {
-        this.items = list;
+        this.tableData = list;
       }
-      // console.log("type:  ", type);
-      // console.log("this.items", this.items);
+      console.log("type:  ", type);
+      console.log("this.items", this.items);
     },
+    //列表切换
     clickTab(index, item) {
       this.currentIndex = index
-      this.getdetail(item.name)
+      this.getList(item.name)
     },
   },
 };

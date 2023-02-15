@@ -1,4 +1,5 @@
 <template>
+  <!-- 详情页 -->
   <div>
     <div class="header-detali">
       <div class="headerall">
@@ -20,10 +21,10 @@
           class="el-rate__icon">
         </el-rate>
         <div class="spreadout">
-          {{ introduce }}
+          {{ commodity }}
         </div>
         <div class="paragraph">
-          {{ details.Productintroduction }}
+          {{ details.commodity }}
         </div>
         <div class="footer">
           <div class="button">
@@ -53,9 +54,10 @@ export default {
     return {
       details: {},
       name: " ",
-      introduce: '商品介绍',
+      commodity: '商品介绍',
       mess: '查看更多',
       esee: '结算订单',
+      introduce: '',
       lookMore: true,
       value: 5
     }
@@ -63,58 +65,24 @@ export default {
   mounted() {
     this.getdetail();
   },
-  watch: {
-    $route: {
-      handler(newVal) {
-        console.log("newVal", newVal);
-        newVal && this.getdetail();
-      },
-    },
-  },
+  // watch: {
+  //   $route: {
+  //     handler(newVal) {
+  //       console.log("newVal", newVal);
+  //       newVal && this.getdetail();
+  //     },
+  //   },
+  // },
   methods: {
     getdetail() {
       const name = this.$route.params && this.$route.params.name;
       name &&
-      meatydetali({ name }).then((data) => {
+        meatydetali({ name }).then((data) => {
           this.details = data.data;
           console.log("this.details", this.details);
         });
     },
-    filterDatas(type, list) {
-      if (type === "Trash") {
-        this.detali = list.filter((item) => item.deleteAt);
-      } else if (type === "deleteAt") {
-        this.detali = list.filter((item) => item.favorties);
-      } else {
-        this.detali = list;
-      }
-      console.log("this.itexms", this.detali);
-      console.log("type:  ", type);
-      // this.detali &&
-      //   this.detali.length > 0 &&
-      //   this.$router
-      //     .push(`/detail`)
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-    },
-    // serch() {
-    //   var dataLists = [];
-    //   if (this.keyWord) {
-    //     for (var i = 0; i < this.tableData.length; i++) {
-    //       if (this.tableData[i].name === this.keyWord) {
-    //         dataLists.push(this.tableData[i]);
-    //         console.log("this.tableData", this.tableData);
-    //       }
-    //     }
-    //   } else {
-    //     dataLists = this.tableData;
-    //   }
-    //   this.items = [...dataLists];
-    //   console.log("this.items", this.items);
-    //   console.log("dataLists", dataLists);
-    // },
-  },
+  }
 }
 </script>
 <style lang="less">
