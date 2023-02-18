@@ -1,8 +1,6 @@
-<template>
-  <!-- 主页 -->
+<template><!-- 主页 -->
   <div class="body center">
     <div class="main">
-      <!-- {{this.items}} -->
       <div class="inputandcion">
         <input v-model.trim="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
         <button class="sousuo" @click="serch">
@@ -26,21 +24,21 @@
           </li>
         </div>
         <!-- <div class="button">
-          <div v-if="items && items.length > 0">
-            <li v-for="(item,index) in items" :key="item.name" class="plant-assembly" @click="button(item)">
-              <router-link :to="`${type}/detail/${item.name}`">
-                <HomePagetwo
-                :title="item.name" :des="item.imgurl" :eal="item.paragraph" 
-                   :class="
-                    name === item.name || (index === 0 && !name)
-                      ? 'isactive'
-                      : undefined
-                  "
-                />
-              </router-link>
-            </li>
-          </div>
-        </div> -->
+                    <div v-if="items && items.length > 0">
+                      <li v-for="(item,index) in items" :key="item.name" class="plant-assembly" @click="button(item)">
+                        <router-link :to="`${type}/detail/${item.name}`">
+                          <HomePagetwo
+                          :title="item.name" :des="item.imgurl" :eal="item.paragraph" 
+                             :class="
+                              name === item.name || (index === 0 && !name)
+                                ? 'isactive'
+                                : undefined
+                            "
+                          />
+                        </router-link>
+                      </li>
+                    </div>
+                  </div> -->
       </div>
       <FooterPage />
     </div>
@@ -97,31 +95,32 @@ export default {
     FooterPage, //底部商品导航,
     RectAngle,//轮播图
   },
-  watch: {
-    $route: {
-      handler(newVal, olaVal) {
-        const newType = newVal.params.type;
-        const oldType = olaVal.params.type;
-        this.name = newVal.params.name;
-        if (newType && newType !== oldType) {
-          this.filterDatas(newType, this.tableData);
-        }
-      },
-    },
-  },
+  // watch: {
+  //   $route: {
+  //     handler(newVal, olaVal) {
+  //       const newType = newVal.params.type;
+  //       const oldType = olaVal.params.type;
+  //       this.name = newVal.params.name;
+  //       if (newType && newType !== oldType) {
+  //         this.filterDatas(newType, this.tableData);
+  //       }
+  //       console.log("tableData", this.tableData);
+  //     },
+  //   },
+  // },
   methods: {
-    // getList(sunflower) {
-    //   reqCategoryList().then((data) => {
-    //     if (sunflower) {
-    //       this.tableData = data.data.filter(e => e.sunflower === sunflower)
-    //     } else {
-    //       this.tableData = data.data;
-    //     }
-    //     const type = this.$route.params.type || "all";
-    //     this.filterDatas(type, data.data);
-    //     // console.log("this.tableData", data.data);
-    //   });
-    // },
+    getList(sunflower) {
+      reqCategoryList().then((data) => {
+        if (sunflower) {
+          this.tableData = data.data.filter(e => e.sunflower === sunflower)
+        } else {
+          this.tableData = data.data;
+        }
+        const type = this.$route.params.type || "all";
+        this.filterDatas(type, data.data);
+        console.log("this.tableData", data.data);
+      });
+    },
     button(item) {
       this.$router.push({
         path: '/detail',
@@ -129,7 +128,7 @@ export default {
           'name': item.name
         }
       }),
-      this.showData = !this.showData;
+        this.showData = !this.showData;
       this.HomePagetwo = this.dataToShow;
     },
     //搜索
@@ -152,14 +151,15 @@ export default {
     //过滤
     filterDatas(type, list) {
       if (type === "Trash") {
-        this.tableData = list.filter((item) => item.deleteAt);
+        this.items = list.filter((item) => item.deleteAt);
       } else if (type === "favorites") {
-        this.tableData = list.filter((item) => item.favorties);
+        this.items = list.filter((item) => item.favorties);
       } else {
-        this.tableData = list;
+        this.items = list;
       }
+      // console.log("------xxxxthis.items", this.items);
       console.log("type:  ", type);
-      console.log("this.items", this.items);
+
     },
     //列表切换
     clickTab(index, item) {
@@ -284,7 +284,7 @@ a {
   }
 
   .plant-assembly {
-    margin-bottom: 2.9rem;
+    margin-bottom: 3rem;
     box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
   }

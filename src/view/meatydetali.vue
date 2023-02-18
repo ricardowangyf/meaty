@@ -1,5 +1,4 @@
 <template>
-  <!-- 详情页 -->
   <div>
     <div class="header-detali">
       <div class="headerall">
@@ -15,21 +14,18 @@
     <div class="meatybody">
       <div class="padddding">
         <div class="detaliname">
-          {{ details.name }}
+          {{ detali.name }}
         </div>
-        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}"
-          class="el-rate__icon">
+        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}" class="el-rate__icon">
         </el-rate>
         <div class="spreadout">
-          {{ commodity }}
+          {{ introduce }}
         </div>
         <div class="paragraph">
-          {{ details.commodity }}
+          {{ detali.Productintroduction }}
         </div>
-        <div class="footer">
-          <div class="button">
-            <button class="bottoncontant" id="more">{{ mess }}</button>
-          </div>
+        <div class="botton">
+          <button class="bottoncontant" id="more">{{ mess }}</button>
         </div>
         <div class="flex">
           <div class="count-c clearfix">
@@ -45,6 +41,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import { meatydetali } from "../API/index";
 
@@ -52,35 +49,44 @@ export default {
   name: 'MeatyDetali',
   data() {
     return {
-      details: {},
+      detali: {},
       name: " ",
-      commodity: '商品介绍',
+      introduce: '商品介绍',
       mess: '查看更多',
       esee: '结算订单',
-      introduce: '',
       lookMore: true,
       value: 5
     }
   },
-  mounted() {
-    this.getdetail();
+  methdos: {
+
   },
-  // watch: {
-  //   $route: {
-  //     handler(newVal) {
-  //       console.log("newVal", newVal);
-  //       newVal && this.getdetail();
-  //     },
-  //   },
-  // },
+  mounted() {
+    meatydetali().then((data) => {
+      this.detali = data.data[0];
+      console.log("-detali-> ", this.detali);
+    });
+  },
+  watch: {
+    $route: {
+      handler(newVal) {
+        newVal && this.getdetail();
+        console.log("newVal", newVal);
+      },
+    },
+    // getdetail() {
+    //   const name = this.$route.params && this.$route.params.name;
+    //   name &&
+    //     meatydetali({ name }).then((data) => {
+    //       this.details = data.data;
+    //       console.log("this.details", this.details);
+    //     });
+    // },
+  },
   methods: {
-    getdetail() {
-      const name = this.$route.params && this.$route.params.name;
-      name &&
-        meatydetali({ name }).then((data) => {
-          this.details = data.data;
-          console.log("this.details", this.details);
-        });
+    selectMore(leg) {
+      this.lookMore = false
+      this.initLength = leg
     },
   }
 }
@@ -122,7 +128,7 @@ img {
 
 .detaliname {
   font-family: Helvetica;
-  font-size: 16.82px;
+  font-size: 22.82px;
   color: #333333;
   letter-spacing: 0;
 }
@@ -133,14 +139,12 @@ img {
 }
 
 .spreadout {
-  margin-top: 20px;
-  margin-bottom: 15px;
+  margin: 30px 0 15px 0;
+  font-weight: 300;
 }
 
-.footer {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
+.botton {
+  padding: 40px 0 20px 0;
 }
 
 .towardsleft {
@@ -176,9 +180,8 @@ img {
 }
 
 .meatybody {
-  margin-left: 25px;
-  margin-right: 25px;
   background: #fff;
+  margin: 0 40px 0 40px;
 }
 
 tbody .count-c {
