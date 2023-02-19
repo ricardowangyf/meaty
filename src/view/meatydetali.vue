@@ -43,6 +43,7 @@
 </template>
 
 <script>
+// import { debug } from "console";
 import { meatydetali } from "../API/index";
 
 export default {
@@ -66,6 +67,7 @@ export default {
       this.detali = data.data[0];
       console.log("-detali-> ", this.detali);
     });
+    // this.getdetail()
   },
   watch: {
     $route: {
@@ -75,12 +77,10 @@ export default {
       },
     },
     // getdetail() {
-    //   const name = this.$route.params && this.$route.params.name;
-    //   name &&
-    //     meatydetali({ name }).then((data) => {
-    //       this.details = data.data;
-    //       console.log("this.details", this.details);
-    //     });
+    //   meatydetali().then((data) => {
+    //     this.details = data.data;
+    //     console.log("this.details", this.details);
+    //   });
     // },
   },
   methods: {
