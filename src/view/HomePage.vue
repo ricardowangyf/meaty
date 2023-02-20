@@ -1,6 +1,7 @@
 
 
-<template><!-- 主页 -->
+<template>
+<!-- 主页 -->
   <div class="body center">
     <div class="main">
       <div class="inputandcion">
@@ -14,10 +15,6 @@
         <RectAngle />
         <div class="button-link">
           <ul class="buttonstyle">
-            <!-- <li @click="clickTab(index, items)" v-for="(items, index) in tabList" :key="index" class="plant-name"
-              :class="{ active: currentIndex === index }">
-              {{ items.name }}
-            </li> -->
             <li v-for="(items,index) in tabList" :key="index" class="plant-name" :class="{ active: currentIndex === index }">
             {{items.name}}
             </li>
@@ -28,19 +25,6 @@
             <HomePagetwo :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
           </li>
         </div>
-        <!-- <div class="button">
-          <div v-if="items && items.length > 0">
-            <li v-for="(item, index) in items" :key="item.name" class="plant-assembly" @click="button(item)">
-              <router-link :to="`${type}/detail/${item.name}`">
-                <HomePagetwo :title="item.name" :des="item.imgurl" :eal="item.paragraph" :class="
-                  name === item.name || (index === 0 && !name)
-                    ? 'isactive'
-                    : undefined
-                " />
-              </router-link>
-            </li>
-          </div>
-        </div> -->
       </div>
       <FooterPage />
     </div>

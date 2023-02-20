@@ -43,7 +43,6 @@
 </template>
 
 <script>
-// import { debug } from "console";
 import { meatydetali } from "../API/index";
 
 export default {
