@@ -58,36 +58,34 @@ export default {
       value: 5
     }
   },
-  methdos: {
+  methods: {
+    getdetail() {
+      const name = this.$route.params && this.$route.params.name;
+      name &&
+      meatydetali({ name }).then((data) => {
+          this.details = data.data;
+          console.log("this.details", this.details);
+        });
+    },
+  },
 
-  },
   mounted() {
-    meatydetali().then((data) => {
-      this.detali = data.data[0];
-      console.log("-detali-> ", this.detali);
-    });
-    // this.getdetail()
+    // meatydetali().then((data) => {
+    //   this.detali = data.data[0];
+    //   console.log("-detali-> ", this.detali);
+    // });
+    this.getdetail()
+    console.log( '----->',this.getdetail )
   },
+
   watch: {
     $route: {
       handler(newVal) {
         newVal && this.getdetail();
-        console.log("newVal", newVal);
+        console.log("------->", this.getdetail());
       },
     },
-    // getdetail() {
-    //   meatydetali().then((data) => {
-    //     this.details = data.data;
-    //     console.log("this.details", this.details);
-    //   });
-    // },
   },
-  methods: {
-    selectMore(leg) {
-      this.lookMore = false
-      this.initLength = leg
-    },
-  }
 }
 </script>
 <style lang="less">

@@ -24,11 +24,11 @@ export default new Router({
             path: '/detail',
             component: () => import('../view/meatydetali.vue')
         },
-        // {
-        //     name: 'MeatyDetali',
-        //     path: '/meatydetali',
-        //     component: () => import('../view/meatydetali.vue'),
-        // },
+        {
+            name: 'MeatyDetali',
+            path: '/meatydetali',
+            component: () => import('../view/meatydetali.vue'),
+        },
         {
             name: 'shopcenter',
             path: '/shopcenter',

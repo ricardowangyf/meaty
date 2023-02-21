@@ -1,41 +1,42 @@
-
-
 <template>
-<!-- 主页 -->
-  <div class="body center">
-    <div class="main">
-      <div class="inputandcion">
-        <input v-model.trim="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
-        <button class="sousuo" @click="serch">
-          <img class="hualigs" src="../assets/img/search.svg" alt />
-          <div class="claer" />
-        </button>
-      </div>
-      <div class="centernow">
-        <RectAngle />
-        <div class="button-link">
-          <ul class="buttonstyle">
-            <li v-for="(items,index) in tabList" :key="index" class="plant-name" :class="{ active: currentIndex === index }">
-            {{items.name}}
+  <div>
+    <!-- 主页 -->
+    <div class="body center">
+      <div class="main">
+        <div class="inputandcion">
+          <input v-model.trim="keyWord" placeholder="搜索你想要的产品" suffix-icon change class="keyword" />
+          <button class="sousuo" @click="serch">
+            <img class="hualigs" src="../assets/img/search.svg" alt />
+            <div class="claer" />
+          </button>
+        </div>
+        <div class="centernow">
+          <RectAngle />
+          <div class="button-link">
+            <ul class="buttonstyle">
+              <li v-for="(items, index) in tabList" :key="index" class="plant-name"
+                :class="{ active: currentIndex === index }">
+                {{ items.name }}
+              </li>
+            </ul>
+          </div>
+          <div v-if="tableData && tableData.length > 0">
+            <li v-for="(item, index) in tableData" :key="index" class="plant-assembly" @click="button(item)">
+              <HomePagetwo :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
             </li>
-          </ul>
+          </div>
         </div>
-        <div v-if="tableData && tableData.length > 0">
-          <li v-for="(item, index) in tableData" :key="index" class="plant-assembly" @click="button(item)">
-            <HomePagetwo :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
-          </li>
-        </div>
+        <FooterPage />
       </div>
-      <FooterPage />
     </div>
   </div>
 </template>
 
 <script>
 import { reqCategoryList } from "../API/index";
-import HomePagetwo from "../components/HomePagetwo.vue"; //商品信息
-import RectAngle from "../components/rectangle.vue"; //轮播图组件
-import FooterPage from "../components/Footer.vue"; //底部商品导航
+import HomePagetwo from "../components/HomePagetwo.vue"; //商品组件(无加入购物车)
+import RectAngle from "../components/rectangle.vue"; //轮播图
+import FooterPage from "../components/Footer.vue"; //底部导航
 
 export default {
   name: "HomePage",
@@ -68,17 +69,17 @@ export default {
     };
   },
   mounted() {
-    // this.getList()
-    reqCategoryList().then((data) => {
-      this.tableData = data.data;
-      const type = this.$route.params.type || "all";
-      this.filterDatas(type, data.data);
-      console.log("this.tableData", this.tableData);
-    });
+    this.getList()
+    // reqCategoryList().then((data) => {
+    //   this.tableData = data.data;
+    //   const type = this.$route.params.type || "all";
+    //   this.filterDatas(type, data.data);
+    //   console.log("this.tableData", this.tableData);
+    // });
   },
   components: {
-    HomePagetwo,
-    FooterPage, //底部商品导航,
+    HomePagetwo,//商品组件(无加入购物车)
+    FooterPage, //底部导航,
     RectAngle,//轮播图
   },
   // watch: {
@@ -95,10 +96,10 @@ export default {
   //   },
   // },
   methods: {
-    getList(sunflower) {
+    getList(favorties) {
       reqCategoryList().then((data) => {
-        if (sunflower) {
-          this.tableData = data.data.filter(e => e.sunflower === sunflower)
+        if (favorties) {
+          this.tableData = data.data.filter(e => e.favorties === favorties)
         } else {
           this.tableData = data.data;
         }
@@ -114,8 +115,9 @@ export default {
           'name': item.name
         }
       }),
-        this.showData = !this.showData;
-      this.HomePagetwo = this.dataToShow;
+        this.newDataList = this.dataList.filter(
+          item => item.indexOf(this.myText) >= 0
+        )
     },
     //搜索
     serch() {
@@ -137,15 +139,13 @@ export default {
     //过滤
     filterDatas(type, list) {
       if (type === "Trash") {
-        this.items = list.filter((item) => item.deleteAt);
+        this.tableData = list.filter((item) => item.deleteAt);
       } else if (type === "favorites") {
-        this.items = list.filter((item) => item.favorties);
+        this.tableData = list.filter((item) => item.favorties);
       } else {
-        this.items = list;
+        this.tableData = list;
       }
-      // console.log("------xxxxthis.items", this.items);
       console.log("type:  ", type);
-
     },
     //列表切换
     clickTab(index, item) {

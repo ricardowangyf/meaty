@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/Vue.js"></script>
+</head>
+<body>
+<div id="aaa">
+    <h1>filter example</h1>
+    <p>pls enter sth: <input type="text" v-model="myText" @input="handleInput"></p>
+    <ul>
+        <li v-for="item in newDataList">{{item}}</li>
+    </ul>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#aaa',
+        data:{
+            myText:'',
+            dataList:['a','at','atom','be','beyond','cs','csrf'],
+            newDataList:['a','at','atom','be','beyond','cs','csrf'],
+        },
+        methods:{
+            handleInput(){
+                this.newDataList = this.dataList.filter(
+                    item => item.indexOf(this.myText) >=0
+                )
+            },
+        },
+    })
+</script>
+</html>
