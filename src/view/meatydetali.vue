@@ -2,15 +2,17 @@
   <div>
     <div class="header-detali">
       <div class="headerall">
-        <router-link to="/" class="towardsleft">
-          <img src="../assets/img/left.svg" class="fanhui" />
-        </router-link>
+
+        <img :src="detali.imgurl" class="header-detali" width="100%" height="315px"/>
         <div class="divv">
+          <router-link to="/" class="towardsleft">
+            <img src="../assets/img/left.svg" class="fanhui" />
+          </router-link>
           <h1 class="detalis">详情</h1>
+
           <div class="clear" />
         </div>
       </div>
-      <img :src="detali.imgurl" class="header-detali" />
     </div>
     <div class="meatybody">
       <div class="padddding">
@@ -90,23 +92,8 @@ export default {
 }
 </script>
 <style lang="less">
-img {
-  width: 100%;
-}
-
 .clear {
   clear: both;
-}
-
-.header-detali {
-  height: 250px;
-  background-size: 100% 390px;
-  background-repeat: no-repeat;
-  // background-image: url(../assets/img/flower.jpg);
-}
-
-.padddding {
-  padding-top: 20px;
 }
 
 .detalis {
@@ -115,7 +102,7 @@ img {
   color: #333333;
   letter-spacing: 0;
   margin: 0;
-  padding: 0;
+  padding-right: 30px;
   font-weight: 200;
 }
 
@@ -145,21 +132,20 @@ img {
   padding: 40px 0 20px 0;
 }
 
-.towardsleft {
-  padding-left: 20px;
+.towardsleft{
+  padding-left: 15px;
 }
 
 .paragraph {
   opacity: 0.58;
   font-family: Helvetica;
-  font-size: 15.3px;
+  font-size: 10.3px;
   color: #333333;
   letter-spacing: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
   overflow: hidden;
-
 }
 
 .el-rate__icon {
@@ -168,13 +154,15 @@ img {
   transition: .3s;
 }
 
-.headerall {
-  padding-top: 15px;
-}
+// .headerall {
+//   padding-top: 15px;
+// }
 
 .divv {
-  float: right;
-  padding-right: 170px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 310px;
 }
 
 .meatybody {
