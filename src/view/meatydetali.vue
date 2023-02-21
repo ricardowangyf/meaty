@@ -10,6 +10,7 @@
           <div class="clear" />
         </div>
       </div>
+      <img :src="detali.imgurl" class="header-detali" />
     </div>
     <div class="meatybody">
       <div class="padddding">
@@ -22,7 +23,7 @@
           {{ introduce }}
         </div>
         <div class="paragraph">
-          {{ detali.Productintroduction }}
+          {{ detali.paragraph }}
         </div>
         <div class="botton">
           <button class="bottoncontant" id="more">{{ mess }}</button>
@@ -43,7 +44,7 @@
 </template>
 
 <script>
-import { meatydetali } from "../API/index";
+// import { details } from "../API/index";
 
 export default {
   name: 'MeatyDetali',
@@ -58,33 +59,33 @@ export default {
       value: 5
     }
   },
+  // watch: {
+  //   $route: {
+  //     handler(newVal) {
+  //       newVal && this.getdetail();
+  //       console.log("------->", this.getdetail);
+  //     },
+  //   },
+  // },
   methods: {
-    getdetail() {
-      const name = this.$route.params && this.$route.params.name;
-      name &&
-      meatydetali({ name }).then((data) => {
-          this.details = data.data;
-          console.log("this.details", this.details);
-        });
-    },
+    // getdetail() {
+    //   const name = this.$route.params && this.$route.params.name;
+    //   name &&
+    //     details({ name }).then((data) => {
+    //       this.details = data.data;
+    //       console.log("this.details", data.data);
+    //     });
+    //   return this.detali
+    // },
   },
-
   mounted() {
-    // meatydetali().then((data) => {
+    console.log(JSON.parse(this.$route.query.data))
+    this.detali = JSON.parse(this.$route.query.data)    // meatydetali().then((data) => {
     //   this.detali = data.data[0];
     //   console.log("-detali-> ", this.detali);
     // });
-    this.getdetail()
-    console.log( '----->',this.getdetail )
-  },
-
-  watch: {
-    $route: {
-      handler(newVal) {
-        newVal && this.getdetail();
-        console.log("------->", this.getdetail());
-      },
-    },
+    // this.getdetail()
+    // console.log('----->', this.getdetail())
   },
 }
 </script>
@@ -101,7 +102,7 @@ img {
   height: 250px;
   background-size: 100% 390px;
   background-repeat: no-repeat;
-  background-image: url(../assets/img/flower.jpg);
+  // background-image: url(../assets/img/flower.jpg);
 }
 
 .padddding {

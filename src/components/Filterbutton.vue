@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { meatydetali } from "../API/index";
+import { details } from "../API/index";
 
 export default {
   name: "FilterButton",
@@ -40,7 +40,7 @@ export default {
     }
   },
   mounted() {
-    meatydetali().then((data) => {
+    details().then((data) => {
       this.tableData = data.data;
       const type = this.$route.params.type || "all";
       this.filterDatas(type, data.data);

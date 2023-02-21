@@ -112,12 +112,12 @@ export default {
       this.$router.push({
         path: '/detail',
         query: {
-          'name': item.name
+          'data': JSON.stringify(item)
         }
-      }),
-        this.newDataList = this.dataList.filter(
-          item => item.indexOf(this.myText) >= 0
-        )
+      })
+        // this.newDataList = this.dataList.filter(
+        //   item => item.indexOf(this.myText) >= 0
+        // )
     },
     //搜索
     serch() {

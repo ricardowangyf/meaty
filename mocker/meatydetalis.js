@@ -2,7 +2,7 @@ const delay = require('mocker-api/lib/delay');
 const noProxy = process.env.NO_PROXY === 'true';
 
 const proxy = {
-    'GET /api/user/list': [
+    'POST /api/user/list': [
         {
             "name": "多肉",
             "introduce": "商品介绍",
