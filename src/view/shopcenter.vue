@@ -1,15 +1,15 @@
 <template>
-  <!-- 商城页面 -->
-  <div class="set-center">
-    <div class="margin">
-      <Filterbutton />
-      <li v-for="(tableData) in tableData" :key="tableData.name" class="plant-details">
-        <router-link :to="`/${tableData.name}/detalis`">
-          <HomeAll :title="tableData.name" :des="tableData.imgurl" :eal="tableData.paragraph" />
-        </router-link>
-      </li>
+  <div>
+    <!-- 商城页面 -->
+    <div class="set-center">
+      <div class="margin">
+        <Filterbutton />
+        <li v-for="(item, index) in tableData" :key="index" class="plant-details" @click="button(item)">
+          <HomeAll :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
+        </li>
+      </div>
+      <FooterPage />
     </div>
-    <FooterPage />
   </div>
 </template>
 
@@ -26,6 +26,8 @@ export default {
     return {
       tableData: [],
       item: [],
+      // 购物车
+      shopCart: [],
       name: " ",
     };
   },
@@ -40,6 +42,18 @@ export default {
       console.log("---> ", this.tableData);
     });
   },
+  methods: {
+    button(item) {
+      this.$router.push({
+        path: '/detail',
+        query: {
+          'data': JSON.stringify(item)
+        }
+      })
+    },
+ 
+
+  }
 };
 </script>
 <style lang="less">
@@ -59,15 +73,6 @@ a {
     margin-bottom: 2.5rem;
     box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
-  }
-  .gouwucjhe {
-    background: #76c477;
-    position: relative;
-    bottom: 76px;
-    width: 78px;
-    left: 239px;
-    border-top-left-radius: 22px;
-    height: 22px;
   }
 }
 </style>

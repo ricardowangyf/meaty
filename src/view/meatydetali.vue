@@ -81,8 +81,9 @@ export default {
     // },
   },
   mounted() {
+    this.detali = JSON.parse(this.$route.query.data)  
     console.log(JSON.parse(this.$route.query.data))
-    this.detali = JSON.parse(this.$route.query.data)    // meatydetali().then((data) => {
+      // meatydetali().then((data) => {
     //   this.detali = data.data[0];
     //   console.log("-detali-> ", this.detali);
     // });

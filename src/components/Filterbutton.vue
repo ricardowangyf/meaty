@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { details } from "../API/index";
+// import { details } from "../API/index";
 
 export default {
   name: "FilterButton",
@@ -40,26 +40,26 @@ export default {
     }
   },
   mounted() {
-    details().then((data) => {
-      this.tableData = data.data;
-      const type = this.$route.params.type || "all";
-      this.filterDatas(type, data.data);
-      // console.log("this.tableData", data.data);
-    });
+    // details().then((data) => {
+    //   this.tableData = data.data;
+    //   const type = this.$route.params.type || "all";
+    //   this.filterDatas(type, data.data);
+    //   // console.log("this.tableData", data.data);
+    // });
   },
-  watch: {
-    $route: {
-      handler(newVal, olaVal) {
-        const newType = newVal.params.type;
-        const oldType = olaVal.params.type;
-        this.name = newVal.params.name;
-        if (newType && newType !== oldType) {
-          this.filterDatas(newType, this.tableData);
-        }
-        console.log("tableData", this.tableData);
-      },
-    },
-  },
+  // watch: {
+  //   $route: {
+  //     handler(newVal, olaVal) {
+  //       const newType = newVal.params.type;
+  //       const oldType = olaVal.params.type;
+  //       this.name = newVal.params.name;
+  //       if (newType && newType !== oldType) {
+  //         this.filterDatas(newType, this.tableData);
+  //       }
+  //       console.log("tableData", this.tableData);
+  //     },
+  //   },
+  // },
   methods: {
     clickTab(e, content) {
       if (e == content) {
@@ -71,16 +71,16 @@ export default {
       }
 
     },
-    filterDatas(type, list) {
-      if (type === "greenpineapple") {
-        this.items = list.filter((tableData) => tableData.deleteAt);
-      } else if (type === "cactus") {
-        this.items = list.filter((tableData) => tableData.favorties);
-      } else {
-        this.items = list;
-      }
-      // console.log("items", this.items);
-    },
+    // filterDatas(type, list) {
+    //   if (type === "greenpineapple") {
+    //     this.items = list.filter((tableData) => tableData.deleteAt);
+    //   } else if (type === "cactus") {
+    //     this.items = list.filter((tableData) => tableData.favorties);
+    //   } else {
+    //     this.items = list;
+    //   }
+    //   // console.log("items", this.items);
+    // },
   }
 };
 </script>

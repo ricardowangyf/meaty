@@ -13,12 +13,12 @@
         <div class="centernow">
           <RectAngle />
           <div class="button-link">
-            <ul class="buttonstyle">
-              <li v-for="(items, index) in tabList" :key="index" class="plant-name"
-                :class="{ active: currentIndex === index }">
-                {{ items.name }}
-              </li>
-            </ul>
+              <router-link :to="`/detail/${items.name}`" class="buttonstyle">
+                <li v-for="(items, index) in tabList" :key="index" class="plant-name"
+                  :class="{ active: currentIndex === index }">
+                  {{ items.name }}
+                </li>
+              </router-link>
           </div>
           <div v-if="tableData && tableData.length > 0">
             <li v-for="(item, index) in tableData" :key="index" class="plant-assembly" @click="button(item)">
@@ -45,6 +45,7 @@ export default {
     return {
       tableData: [],
       items: [],
+      // item:[],
       name: " ",
       keyWord: " ",
       tabList: [
@@ -82,19 +83,6 @@ export default {
     FooterPage, //底部导航,
     RectAngle,//轮播图
   },
-  // watch: {
-  //   $route: {
-  //     handler(newVal, olaVal) {
-  //       const newType = newVal.params.type;
-  //       const oldType = olaVal.params.type;
-  //       this.name = newVal.params.name;
-  //       if (newType && newType !== oldType) {
-  //         this.filterDatas(newType, this.tableData);
-  //       }
-  //       console.log("tableData", this.tableData);
-  //     },
-  //   },
-  // },
   methods: {
     getList(favorties) {
       reqCategoryList().then((data) => {
@@ -115,9 +103,6 @@ export default {
           'data': JSON.stringify(item)
         }
       })
-        // this.newDataList = this.dataList.filter(
-        //   item => item.indexOf(this.myText) >= 0
-        // )
     },
     //搜索
     serch() {

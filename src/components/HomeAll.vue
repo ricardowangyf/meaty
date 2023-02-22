@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="shopping-cart">
-      <button class="shopping-text">加入购物车</button>
+      <button class="shopping-text" >加入购物车</button>
     </div>
   </div>
 </template>
