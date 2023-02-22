@@ -13,12 +13,12 @@
         <div class="centernow">
           <RectAngle />
           <div class="button-link">
-              <router-link :to="`/detail/${items.name}`" class="buttonstyle">
-                <li v-for="(items, index) in tabList" :key="index" class="plant-name"
-                  :class="{ active: currentIndex === index }">
-                  {{ items.name }}
-                </li>
-              </router-link>
+            <router-link :to="`/detail/${items.name}`" class="buttonstyle">
+              <li v-for="(items, index) in tabList" :key="index" class="plant-name"
+                :class="{ active: currentIndex === index }">
+                {{ items.name }}
+              </li>
+            </router-link>
           </div>
           <div v-if="tableData && tableData.length > 0">
             <li v-for="(item, index) in tableData" :key="index" class="plant-assembly" @click="button(item)">

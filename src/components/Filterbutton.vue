@@ -3,7 +3,7 @@
   <!-- 过滤按钮 -->
   <div class="button-link">
     <ul class="buttonstyle">
-      <li @click="clickTab(index)" v-for="(item,index) in tabList" :key="index" class="plant-name">
+      <li @click="clickTab(index)" v-for="(item,index) in tabList" :key="index" class="plant-name" :class="{ active: currentIndex === index }">
         {{ item.name }}
       </li>
     </ul>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-// import { details } from "../API/index";
 
 export default {
   name: "FilterButton",
   data() {
     return {
+      currentIndex: 0,
       tabList: [
         {
           id: 1,
@@ -40,26 +40,7 @@ export default {
     }
   },
   mounted() {
-    // details().then((data) => {
-    //   this.tableData = data.data;
-    //   const type = this.$route.params.type || "all";
-    //   this.filterDatas(type, data.data);
-    //   // console.log("this.tableData", data.data);
-    // });
   },
-  // watch: {
-  //   $route: {
-  //     handler(newVal, olaVal) {
-  //       const newType = newVal.params.type;
-  //       const oldType = olaVal.params.type;
-  //       this.name = newVal.params.name;
-  //       if (newType && newType !== oldType) {
-  //         this.filterDatas(newType, this.tableData);
-  //       }
-  //       console.log("tableData", this.tableData);
-  //     },
-  //   },
-  // },
   methods: {
     clickTab(e, content) {
       if (e == content) {
@@ -71,16 +52,6 @@ export default {
       }
 
     },
-    // filterDatas(type, list) {
-    //   if (type === "greenpineapple") {
-    //     this.items = list.filter((tableData) => tableData.deleteAt);
-    //   } else if (type === "cactus") {
-    //     this.items = list.filter((tableData) => tableData.favorties);
-    //   } else {
-    //     this.items = list;
-    //   }
-    //   // console.log("items", this.items);
-    // },
   }
 };
 </script>

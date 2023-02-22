@@ -3,8 +3,8 @@
     <!-- 商城页面 -->
     <div class="set-center">
       <div class="margin">
-        <Filterbutton />
-        <li v-for="(item, index) in tableData" :key="index" class="plant-details" @click="button(item)">
+        <Filterbutton  />
+        <li v-for="(item, index) in tableData" :key="index" class="plant-details" @click="button(item)" >
           <HomeAll :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
         </li>
       </div>
@@ -27,7 +27,7 @@ export default {
       tableData: [],
       item: [],
       // 购物车
-      shopCart: [],
+      shopCart: [], 
       name: " ",
     };
   },
@@ -51,14 +51,23 @@ export default {
         }
       })
     },
- 
 
+    //列表切换
+    clickTab(index, item) {
+      this.currentIndex = index
+      this.getList(item.name)
+    },
   }
 };
 </script>
 <style lang="less">
 li {
   list-style-type: none;
+}
+
+.active {
+  background: #4C6EF5;
+  color: #fff;
 }
 
 a {
