@@ -3,7 +3,7 @@
     <div class="header-detali">
       <div class="headerall">
 
-        <img :src="detali.imgurl" class="header-detali" width="100%" height="315px"/>
+        <img :src="detali.imgurl" class="header-detali" width="100%" height="315px" />
         <div class="divv">
           <router-link to="/" class="towardsleft">
             <img src="../assets/img/left.svg" class="fanhui" />
@@ -28,13 +28,19 @@
           {{ detali.paragraph }}
         </div>
         <div class="botton">
-          <button class="bottoncontant" id="more">{{ mess }}</button>
+          <button class="bottoncontant" id="more" v-show="this.roleNumber > 5 && lookMore"
+            @click="selectMore(this.roleNumber)">{{ mess }}</button>
         </div>
         <div class="flex">
           <div class="count-c clearfix">
-            <button class="reduce">-</button>
-            <input type="text" value="1" class="textinput">
+            <!-- <button class="reduce">-</button>
+            <input @click="num++" type="text" class="textinput">
             <button class="add">+</button>
+            <button type="button" @click="num++">点击加1</button> -->
+            <button type="button" v-on:click="add" class="add">+</button> <!--可以用@ 代替v-on-->
+            <!-- <h2>当前计数：{{ counter }}</h2> -->
+            <input type="text" class="textinput" :placeholder="counter">
+            <button type="button" @click="sub" class="add">-</button>
           </div>
           <div>
             <button class="jiesuan">{{ esee }}</button>
@@ -56,8 +62,12 @@ export default {
       name: " ",
       introduce: '商品介绍',
       mess: '查看更多',
+      roleNumber: {},
       esee: '结算订单',
       lookMore: true,
+      counter:1,
+      initLength: 5,
+      num: 1,
       value: 5
     }
   },
@@ -79,11 +89,22 @@ export default {
     //     });
     //   return this.detali
     // },
+    add: function () {
+      this.counter++
+    },
+    sub: function () {
+      this.counter--
+    },
+    selectMore(leg) {
+      this.lookMore = false
+      this.initLength = leg
+      this.roleNumber = this.detali.paragraph.length
+    },
   },
   mounted() {
-    this.detali = JSON.parse(this.$route.query.data)  
+    this.detali = JSON.parse(this.$route.query.data)
     console.log(JSON.parse(this.$route.query.data))
-      // meatydetali().then((data) => {
+    // meatydetali().then((data) => {
     //   this.detali = data.data[0];
     //   console.log("-detali-> ", this.detali);
     // });
@@ -125,16 +146,21 @@ export default {
 }
 
 .spreadout {
-  margin: 30px 0 15px 0;
+  padding: 25px 0 15px 0;
   font-weight: 300;
 }
 
 .botton {
-  padding: 40px 0 20px 0;
+  padding: 10px 0 33px 0;
 }
 
-.towardsleft{
+.towardsleft {
   padding-left: 15px;
+}
+
+.add{
+  background: white;
+    border: none;
 }
 
 .paragraph {
