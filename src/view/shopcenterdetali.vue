@@ -44,7 +44,6 @@
 </template>
   
 <script>
-// import { details } from "../API/index";
 
 export default {
   name: 'MeatyDetali',
@@ -59,34 +58,11 @@ export default {
       value: 5
     }
   },
-  // watch: {
-  //   $route: {
-  //     handler(newVal) {
-  //       newVal && this.getdetail();
-  //       console.log("------->", this.getdetail);
-  //     },
-  //   },
-  // },
   methods: {
-    // getdetail() {
-    //   const name = this.$route.params && this.$route.params.name;
-    //   name &&
-    //     details({ name }).then((data) => {
-    //       this.details = data.data;
-    //       console.log("this.details", data.data);
-    //     });
-    //   return this.detali
-    // },
   },
   mounted() {
     this.detali = JSON.parse(this.$route.query.data)
     console.log(JSON.parse(this.$route.query.data))
-    // meatydetali().then((data) => {
-    //   this.detali = data.data[0];
-    //   console.log("-detali-> ", this.detali);
-    // });
-    // this.getdetail()
-    // console.log('----->', this.getdetail())
   },
 }
 </script>
