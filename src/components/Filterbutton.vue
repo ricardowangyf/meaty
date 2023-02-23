@@ -3,7 +3,8 @@
   <!-- 过滤按钮 -->
   <div class="button-link">
     <ul class="buttonstyle">
-      <li @click="clickTab(index)" v-for="(item,index) in tabList" :key="index" class="plant-name" :class="{ active: currentIndex === index }">
+      <li @click="clickTab(index)" v-for="(item, index) in tabList" :key="index" class="plant-name"
+        :class="{ active: currentIndex === index }">
         {{ item.name }}
       </li>
     </ul>
@@ -57,6 +58,11 @@ export default {
 </script>
 
 <style lang="less">
+.active {
+  background: #4C6EF5;
+  color: #fff;
+}
+
 .button-link {
   padding: 25px 0 25px 0;
 

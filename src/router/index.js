@@ -18,7 +18,7 @@ export default new Router({
             name: 'CommUnity',
             path: '/community',
             component: () => import('../view/CommUnity.vue')
-        }, 
+        },
         {
             name: '/detail',
             path: '/detail',
@@ -28,6 +28,11 @@ export default new Router({
             name: 'MeatyDetali',
             path: '/meatydetali',
             component: () => import('../view/meatydetali.vue'),
+        },
+        {
+            name: 'shopcenterdetali',
+            path: '/shopcenterdetali',
+            component: () => import('../view/shopcenterdetali.vue'),
         },
         {
             name: 'shopcenter',
