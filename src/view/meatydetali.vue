@@ -28,19 +28,16 @@
           {{ detali.paragraph }}
         </div>
         <div class="botton">
-          <button class="bottoncontant" id="more" v-show="this.roleNumber > 5 && lookMore"
-            @click="selectMore(this.roleNumber)">{{ mess }}</button>
+          <button class="bottoncontant" id="more">{{ mess }}</button>
         </div>
         <div class="flex">
-          <div class="count-c clearfix">
-            <!-- <button class="reduce">-</button>
+          <!-- <button class="reduce">-</button>
             <input @click="num++" type="text" class="textinput">
-            <button class="add">+</button>
-            <button type="button" @click="num++">点击加1</button> -->
+            <button class="add">+</button> -->
+          <div class="button-add">
             <button type="button" v-on:click="add" class="add">+</button> <!--可以用@ 代替v-on-->
-            <!-- <h2>当前计数：{{ counter }}</h2> -->
             <input type="text" class="textinput" :placeholder="counter">
-            <button type="button" @click="sub" class="add">-</button>
+            <button type="button" @click="sub" class="addetalid">-</button>
           </div>
           <div>
             <button class="jiesuan">{{ esee }}</button>
@@ -65,7 +62,7 @@ export default {
       roleNumber: {},
       esee: '结算订单',
       lookMore: true,
-      counter:1,
+      counter: 1,
       initLength: 5,
       num: 1,
       value: 5
@@ -89,16 +86,11 @@ export default {
     //     });
     //   return this.detali
     // },
-    add: function () {
+    add() {
       this.counter++
     },
-    sub: function () {
+    sub() {
       this.counter--
-    },
-    selectMore(leg) {
-      this.lookMore = false
-      this.initLength = leg
-      this.roleNumber = this.detali.paragraph.length
     },
   },
   mounted() {
@@ -158,9 +150,18 @@ export default {
   padding-left: 15px;
 }
 
-.add{
+.add {
   background: white;
-    border: none;
+  border: none;
+  position: relative;
+  left: 31px;
+}
+
+.addetalid {
+  background: white;
+  border: none;
+  position: relative;
+  right: 27px;
 }
 
 .paragraph {
@@ -195,6 +196,12 @@ export default {
 .meatybody {
   background: #fff;
   margin: 0 40px 0 40px;
+}
+
+.button-add {
+  display: flex;
+  position: relative;
+  right: 20px;
 }
 
 tbody .count-c {
@@ -250,14 +257,14 @@ tbody .reduce {
   height: 50px;
 }
 
-.add {
-  width: 0;
-  height: 0;
-  background: #fff;
-  border: none;
-  position: relative;
-  right: 25px;
-}
+// .add {
+//   width: 0;
+//   height: 0;
+//   background: #fff;
+//   border: none;
+//   position: relative;
+//   right: 25px;
+// }
 
 .reduce {
   width: 0;
