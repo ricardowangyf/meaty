@@ -23,6 +23,7 @@
       </div>
       <div class="botton">
         <button class="bottoncontant" id="more">{{ mess }}</button>
+        <img src="../assets/img/down.svg" width=" 20px" height=" 20px" style="margin-bottom: -5px;">
       </div>
       <div class="flex">
         <div class="button-add">
@@ -31,7 +32,7 @@
           <button type="button" v-on:click="add" class="add">+</button>
         </div>
         <div>
-          <button class="jiesuan">{{ esee }}</button>
+          <button class="settlement">{{ esee }}</button>
         </div>
       </div>
     </div>
@@ -245,7 +246,7 @@ tbody .reduce {
 }
 
 
-.jiesuan {
+.settlement {
   background: #76C477;
   width: 147px;
   height: 50px;
