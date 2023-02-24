@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 商城页面 -->
-    <div class="set-center">
-      <div class="margin">
+    <div class="mall-page">
+      <div class="main-body">
         <Filterbutton />
         <li v-for="(item, index) in tableData" :key="index" class="plant-details" @click="button(item)">
           <HomeAll :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
@@ -65,15 +65,12 @@ li {
   list-style-type: none;
 }
 
-
-
 a {
   text-decoration: none;
 }
 
-.margin {
+.main-body {
   margin: 0 25px 0 25px;
-
   .plant-details {
     background: #ffffff;
     margin-bottom: 2.5rem;

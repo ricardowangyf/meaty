@@ -1,47 +1,37 @@
 <template>
   <div>
     <div class="header-detali">
-      <div class="headerall">
-
-        <img :src="detali.imgurl" class="header-detali" width="100%" height="315px" />
-        <div class="divv">
-          <router-link to="/" class="towardsleft">
-            <img src="../assets/img/left.svg" class="fanhui" />
-          </router-link>
-          <h1 class="detalis">详情</h1>
-
-          <div class="clear" />
-        </div>
+      <img :src="detali.imgurl" class="header-detali" width="100%" height="315px" />
+      <div class="column">
+        <router-link to="/" class="towardsleft">
+          <img src="../assets/img/left.svg" class="back" />
+        </router-link>
+        <h1 class="detalis">详情</h1>
       </div>
     </div>
     <div class="meatybody">
-      <div class="padddding">
-        <div class="detaliname">
-          {{ detali.name }}
+      <div class="detaliname">
+        {{ detali.name }}
+      </div>
+      <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}">
+      </el-rate>
+      <div class="container">
+        {{ introduce }}
+      </div>
+      <div class="paragraph">
+        {{ detali.paragraph }}
+      </div>
+      <div class="botton">
+        <button class="bottoncontant" id="more">{{ mess }}</button>
+      </div>
+      <div class="flex">
+        <div class="button-add">
+          <button type="button" @click="sub" class="less">-</button> <!--可以用@ 代替v-on-->
+          <input type="text" class="textinput" :placeholder="counter">
+          <button type="button" v-on:click="add" class="add">+</button>
         </div>
-        <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}" class="el-rate__icon">
-        </el-rate>
-        <div class="spreadout">
-          {{ introduce }}
-        </div>
-        <div class="paragraph">
-          {{ detali.paragraph }}
-        </div>
-        <div class="botton">
-          <button class="bottoncontant" id="more">{{ mess }}</button>
-        </div>
-        <div class="flex">
-          <!-- <button class="reduce">-</button>
-            <input @click="num++" type="text" class="textinput">
-            <button class="add">+</button> -->
-          <div class="button-add">
-            <button type="button" v-on:click="add" class="add">+</button> <!--可以用@ 代替v-on-->
-            <input type="text" class="textinput" :placeholder="counter">
-            <button type="button" @click="sub" class="addetalid">-</button>
-          </div>
-          <div>
-            <button class="jiesuan">{{ esee }}</button>
-          </div>
+        <div>
+          <button class="jiesuan">{{ esee }}</button>
         </div>
       </div>
     </div>
@@ -56,15 +46,10 @@ export default {
   data() {
     return {
       detali: {},
-      name: " ",
       introduce: '商品介绍',
       mess: '查看更多',
-      roleNumber: {},
       esee: '结算订单',
-      lookMore: true,
       counter: 1,
-      initLength: 5,
-      num: 1,
       value: 5
     }
   },
@@ -106,23 +91,25 @@ export default {
 }
 </script>
 <style lang="less">
-.clear {
-  clear: both;
+.header-detali {
+  .detalis {
+    font-size: 15.82px;
+    color: #333333;
+    margin: 0;
+    padding-left: 125px;
+    font-weight: 200;
+  }
+
+  .back {
+    width: 15px;
+    height: 15px;
+  }
+
 }
 
-.detalis {
-  font-family: Helvetica;
-  font-size: 15.82px;
-  color: #333333;
-  letter-spacing: 0;
-  margin: 0;
-  padding-right: 30px;
-  font-weight: 200;
-}
-
-.fanhui {
-  width: 15px;
-  height: 15px;
+.container {
+  padding: 25px 0 15px 0;
+  font-weight: 300;
 }
 
 .detaliname {
@@ -132,32 +119,23 @@ export default {
   letter-spacing: 0;
 }
 
-.icon-login {
-  width: 20px;
-  height: 20px;
-}
-
-.spreadout {
-  padding: 25px 0 15px 0;
-  font-weight: 300;
-}
-
 .botton {
   padding: 10px 0 33px 0;
 }
 
 .towardsleft {
   padding-left: 15px;
+  padding-top: 2px;
 }
 
-.add {
+.less {
   background: white;
   border: none;
   position: relative;
   left: 31px;
 }
 
-.addetalid {
+.add {
   background: white;
   border: none;
   position: relative;
@@ -172,23 +150,13 @@ export default {
   letter-spacing: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
+  -webkit-line-clamp: 9;
   overflow: hidden;
 }
 
-.el-rate__icon {
-  font-size: 18px;
-  color: #C0C4CC;
-  transition: .3s;
-}
-
-// .headerall {
-//   padding-top: 15px;
-// }
-
-.divv {
+.column {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   bottom: 310px;
 }
@@ -256,15 +224,6 @@ tbody .reduce {
   width: 100px;
   height: 50px;
 }
-
-// .add {
-//   width: 0;
-//   height: 0;
-//   background: #fff;
-//   border: none;
-//   position: relative;
-//   right: 25px;
-// }
 
 .reduce {
   width: 0;
