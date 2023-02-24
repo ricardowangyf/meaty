@@ -1,24 +1,12 @@
-# meaty
+# 多肉小程序
 
-## Project setup
-```
-npm install
-```
+技术栈
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+vue2 element-ui vue-router mocker less-loader axios
 
-### Compiles and minifies for production
-```
-npm run build
-```
+功能:
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+列表数据过滤
+搜索框
+主页多肉详情内数据过滤
+列表第一个按钮默认蓝色
