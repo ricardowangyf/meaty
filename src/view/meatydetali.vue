@@ -18,21 +18,22 @@
       <div class="container">
         {{ introduce }}
       </div>
-      <div class="paragraph">
-        {{ detali.paragraph }}
+      <div class="detali-paragraph">
+        <!-- {{ detali.paragraph }} -->
+        <p class="paragraph">{{ showAll ? this.detali.paragraph : this.detali.paragraph.slice(0, 20) + '...' }}</p>
       </div>
-      <div class="botton">
-        <button class="bottoncontant" id="more">{{ mess }}</button>
+      <button class="botton" @click="shoemore">
+        <div class="bottoncontant" id="more">{{ moretext }}</div>
         <img src="../assets/img/down.svg" width=" 20px" height=" 20px" style="margin-bottom: -5px;">
-      </div>
-      <div class="flex">
+      </button>
+      <div class="footer">
         <div class="button-add">
           <button type="button" @click="sub" class="less">-</button> <!--可以用@ 代替v-on-->
           <input type="text" class="textinput" :placeholder="counter">
           <button type="button" v-on:click="add" class="add">+</button>
         </div>
         <div>
-          <button class="settlement">{{ esee }}</button>
+          <button class="settlement">{{ indent }}</button>
         </div>
       </div>
     </div>
@@ -48,10 +49,13 @@ export default {
     return {
       detali: {},
       introduce: '商品介绍',
-      mess: '查看更多',
-      esee: '结算订单',
-      counter: 1,
-      value: 5
+      moretext: '查看更多',
+      indent: '结算订单',
+      counter: 1, //初始数字
+      value: 5, //星星的值
+      showAll: false,
+      lineHeight: 1.2,  // 设置行高
+      lineClamp: 3  // 设置显示的行数
     }
   },
   // watch: {
@@ -78,6 +82,20 @@ export default {
     sub() {
       this.counter--
     },
+    shoemore() {
+      this.showAll = !this.showAll;
+      if (this.showAll) {
+        this.$refs.detali.paragraph.style.setProperty('max-height', 'none');
+      } else {
+        let height = this.$refs.detali.paragraph.clientHeight;
+        let lineHeight = this.lineHeight * parseInt(getComputedStyle(this.$refs.detali.paragraph).fontSize);
+        let maxLines = this.lineClamp;
+        let maxHeight = lineHeight * maxLines;
+        if (height > maxHeight) {
+          this.$refs.detali.paragraph.style.setProperty('max-height', maxHeight + 'px');
+        }
+      }
+    }
   },
   mounted() {
     this.detali = JSON.parse(this.$route.query.data)
@@ -121,6 +139,10 @@ export default {
 }
 
 .botton {
+  display: flex;
+  justify-content: flex-start;
+  border: none;
+  background: white;
   padding: 10px 0 33px 0;
 }
 
@@ -148,11 +170,11 @@ export default {
   font-family: Helvetica;
   font-size: 10.3px;
   color: #333333;
-  letter-spacing: 0;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 9;
-  overflow: hidden;
+  letter-spacing: 0; 
+  line-height: 1.2;  // 设置行高
+    max-height: calc(1.2 * 3 * var(--font-size));  // 设置最大高度
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .column {
@@ -259,7 +281,7 @@ tbody .reduce {
   letter-spacing: 0;
 }
 
-.flex {
+.footer {
   display: flex;
   justify-content: space-between;
 }

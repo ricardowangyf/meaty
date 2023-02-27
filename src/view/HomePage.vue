@@ -255,4 +255,5 @@ export default {
     padding-top: 6px;
     opacity: 0.6;
   }
-}</style>
+}
+</style>
