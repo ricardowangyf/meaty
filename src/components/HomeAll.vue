@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="shopping-cart">
-      <button class="shopping-text" >加入购物车</button>
+      <button class="shopping-text"  @onclick="addToCart(product)">加入购物车</button>
     </div>
   </div>
 </template>
@@ -35,9 +35,25 @@ export default {
   },
   data() {
     return {
-      value: 5
+      value: 5,
+      cart: []
     };
   },
+  methods: {
+    // addToCart(product) {
+    //   let item = this.cart.find(item => item.id === product.id);
+    //   if (item) {
+    //     item.quantity++;
+    //   } else {
+    //     this.cart.push({
+    //       id: detali.id,
+    //       name: product.name,
+    //       price: product.price,
+    //       quantity: 1
+    //     });
+    //   }
+    // }
+  }
 };
 </script>
 <style lang="less">
