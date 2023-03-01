@@ -11,9 +11,7 @@
         <el-rate v-model="value" disabled text-color="#ff9900" score-template="{value}" />
       </div>
     </div>
-    <div class="shopping-cart">
-      <button class="shopping-text"  @onclick="addToCart(product)">加入购物车</button>
-    </div>
+
   </div>
 </template>
 
@@ -40,19 +38,7 @@ export default {
     };
   },
   methods: {
-    // addToCart(product) {
-    //   let item = this.cart.find(item => item.id === product.id);
-    //   if (item) {
-    //     item.quantity++;
-    //   } else {
-    //     this.cart.push({
-    //       id: detali.id,
-    //       name: product.name,
-    //       price: product.price,
-    //       quantity: 1
-    //     });
-    //   }
-    // }
+
   }
 };
 </script>
@@ -107,25 +93,5 @@ export default {
   }
 }
 
-.shopping-cart {
-  display: flex;
-  justify-content: flex-end;
-}
 
-.shopping-cart {
-  height: 31px;
-  text-align: center;
-  font-weight: 100;
-}
-
-.shopping-text {
-  border-top-left-radius: 20px;
-  background: #76C477;
-  border-bottom-right-radius: 20px;
-  color: white;
-  border: none;
-  padding-top: 6px;
-  display: flex;
-  justify-content: flex-end;
-}
 </style>
