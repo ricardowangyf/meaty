@@ -3,12 +3,23 @@
     <!-- 商城页面 -->
     <div class="mall-page">
       <div class="main-body">
-        <div class="addToCart">
-          <button class="shopping-text" @onclick="addToCart(product)">加入购物车</button>
-        </div>
         <Filterbutton />
-        <li v-for="(item, index) in tableData" :key="index" class="plant-details" @click="button(item)">
-          <HomeAll :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
+        <li
+          v-for="(item, index) in tableData"
+          :key="index"
+          class="plant-details"
+          @click="button(item)"
+        >
+          <HomeAll
+            :title="item.name"
+            :des="item.imgurl"
+            :eal="item.paragraph"
+          />
+          <div class="addToCart">
+            <button class="shopping-text" @onclick="addToCart(product)">
+              加入购物车
+            </button>
+          </div>
         </li>
       </div>
       <FooterPage />
@@ -17,8 +28,8 @@
 </template>
 
 <script>
-import Filterbutton from "../components/Filterbutton.vue";//过滤按钮
-import FooterPage from "../components/Footer.vue";//底部导航栏
+import Filterbutton from "../components/Filterbutton.vue"; //过滤按钮
+import FooterPage from "../components/Footer.vue"; //底部导航栏
 import HomeAll from "../components/HomeAll.vue"; //商品信息
 import { reqCategoryList } from "../API/index"; //轮播图
 
@@ -37,7 +48,7 @@ export default {
   components: {
     Filterbutton, //过滤按钮,
     HomeAll, //商品信息
-    FooterPage,//底部导航栏
+    FooterPage, //底部导航栏
   },
   mounted() {
     reqCategoryList().then((data) => {
@@ -48,11 +59,11 @@ export default {
   methods: {
     button(item) {
       this.$router.push({
-        path: '/detail',
+        path: "/detail",
         query: {
-          'data': JSON.stringify(item)
-        }
-      })
+          data: JSON.stringify(item),
+        },
+      });
     },
     // addToCart(product) {
     //   let item = this.cart.find(item => item.id === product.id);
@@ -69,10 +80,10 @@ export default {
     // }
     //列表切换
     clickTab(index, item) {
-      this.currentIndex = index
-      this.getList(item.name)
+      this.currentIndex = index;
+      this.getList(item.name);
     },
-  }
+  },
 };
 </script>
 <style lang="less">
@@ -90,7 +101,8 @@ a {
   .plant-details {
     background: #ffffff;
     margin-bottom: 2.5rem;
-    box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
+    box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%),
+      1px 6px 20px 8px rgb(173 173 179 / 13%);
     border-radius: 5.04px;
   }
 }
@@ -108,7 +120,7 @@ a {
 
 .shopping-text {
   border-top-left-radius: 20px;
-  background: #76C477;
+  background: #76c477;
   border-bottom-right-radius: 20px;
   color: white;
   border: none;

@@ -3,7 +3,12 @@
     <!-- 主页 -->
     <div class="body center">
       <div class="input-box">
-        <input v-model.trim="keyWord" placeholder="搜索你想要的产品" change class="Input-box-css" />
+        <input
+          v-model.trim="keyWord"
+          placeholder="搜索你想要的产品"
+          change
+          class="Input-box-css"
+        />
         <button class="serch" @click="serch">
           <img src="../assets/img/search.svg" alt />
         </button>
@@ -11,16 +16,29 @@
       <div class="homepage-center">
         <RectAngle />
         <div class="button-link">
-          <router-link :to="`/detail/${items.name}`" class="button-style">
-            <li v-for="(items, index) in tabList" :key="index" class="plant-name"
-              :class="{ active: currentIndex === index }">
+          <router-link :to="`/list/${items.name}`" class="button-style">
+            <li
+              v-for="(items, index) in tabList"
+              :key="index"
+              class="plant-name"
+              :class="{ active: currentIndex === index }"
+            >
               {{ items.name }}
             </li>
           </router-link>
         </div>
         <div v-if="tableData && tableData.length > 0">
-          <li v-for="(item, index) in tableData" :key="index" class="component-details" @click="button(item)">
-            <HomePagetwo :title="item.name" :des="item.imgurl" :eal="item.paragraph" />
+          <li
+            v-for="(item, index) in tableData"
+            :key="index"
+            class="component-details"
+            @click="button(item)"
+          >
+            <HomePagetwo
+              :title="item.name"
+              :des="item.imgurl"
+              :eal="item.paragraph"
+            />
           </li>
         </div>
       </div>
@@ -40,33 +58,35 @@ export default {
   props: ["type"],
   data() {
     return {
-      tableData: [],
+      tableData: [
+      ],
       items: [],
       name: " ",
       keyWord: " ",
       tabList: [
         {
           id: 1,
-          name: '全部'
-        }, {
+          name: "全部",
+        },
+        {
           id: 2,
-          name: '向日葵'
+          name: "向日葵",
         },
         {
           id: 3,
-          name: '仙人掌'
+          name: "仙人掌",
         },
         {
           id: 4,
-          name: '玉露'
-        }
+          name: "玉露",
+        },
       ],
       currentIndex: 0,
-      content: 'fdgfdgffdgfd',
+      content: "fdgfdgffdgfd",
     };
   },
   mounted() {
-    this.getList()
+    this.getList();
     // reqCategoryList().then((data) => {
     //   this.tableData = data.data;
     //   const type = this.$route.params.type || "all";
@@ -75,30 +95,47 @@ export default {
     // });
   },
   components: {
-    HomePagetwo,//商品组件(无加入购物车)
+    HomePagetwo, //商品组件(无加入购物车)
     FooterPage, //底部导航,
-    RectAngle,//轮播图
+    RectAngle, //轮播图
+  },
+  watch: {
+    $route: {
+      handler(newVal, olaVal) {
+        const newType = newVal.params.type;
+        const oldType = olaVal.params.type;
+        this.name = newVal.params.name;
+        if (newType && newType !== oldType) {
+          this.filterDatas(newType, this.tableData);
+        }
+        console.log("tableData", this.tableData);
+      },
+    },
   },
   methods: {
-    getList(favorties) {
+    getList() {
       reqCategoryList().then((data) => {
-        if (favorties) {
-          this.tableData = data.data.filter(e => e.favorties === favorties)
-        } else {
-          this.tableData = data.data;
-        }
-        const type = this.$route.params.type || "all";
-        this.filterDatas(type, data.data);
-        console.log("this.tableData", data.data);
+        // if (favorties) {
+        //   this.tableData = data.data.filter((e) => e.favorties === favorties);
+        // } else {
+        //   this.tableData = data.data;
+        // }
+        // const type = this.$route.params.type || "all";
+        // this.filterDatas(type, data.data);
+        // console.log("this.tableData", data.data);
+        this.tableData = data.data;
+      const type = this.$route.params.type || "all";
+      this.filterDatas(type, data.data);
+      console.log("this.tableData", data.data);
       });
     },
     button(item) {
       this.$router.push({
-        path: '/detail',
+        path: "/detail",
         query: {
-          'data': JSON.stringify(item)
-        }
-      })
+          data: JSON.stringify(item),
+        },
+      });
     },
     //搜索
     serch() {
@@ -127,11 +164,18 @@ export default {
         this.tableData = list;
       }
       console.log("type:  ", type);
+      this.items &&
+        this.items.length > 0 &&
+        this.$router
+          .push(`/list/${type}/detail/${this.items[0].name}`)
+          .catch((err) => {
+            console.log(err);
+          });
     },
     //列表切换
     clickTab(index, item) {
-      this.currentIndex = index
-      this.getList(item.name)
+      this.currentIndex = index;
+      this.getList(item.name);
     },
   },
 };
@@ -172,7 +216,7 @@ export default {
       border-radius: 19.8px;
       width: 20%;
       letter-spacing: 0;
-      background: #F1F3F5;
+      background: #f1f3f5;
       font-size: 0.7rem;
       opacity: 0.7;
       padding-top: 0.4rem;
@@ -203,7 +247,7 @@ export default {
     }
 
     .active {
-      background: #4C6EF5;
+      background: #4c6ef5;
       color: #fff;
     }
   }
@@ -228,7 +272,7 @@ export default {
       height: 2.5rem;
       border: none;
       outline: none;
-      background: #FAFAF5;
+      background: #fafaf5;
       border-radius: 5.76px;
     }
   }
@@ -243,7 +287,8 @@ export default {
 
     .component-details {
       margin-bottom: 3rem;
-      box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%), 1px 6px 20px 8px rgb(173 173 179 / 13%);
+      box-shadow: 12px 4px 54px 3px rgb(173 174 179 / 13%),
+        1px 6px 20px 8px rgb(173 173 179 / 13%);
       border-radius: 5.04px;
     }
   }
