@@ -76,7 +76,7 @@ export default {
       counter: 1, //初始数字
       value: 5, //星星的值
       showAll: false,
-      paragraph:'',
+      paragraph: "",
       lineHeight: 1.2, // 设置行高
       lineClamp: 5, // 在未展开状态下显示的数据条数
     };
