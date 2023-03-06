@@ -170,7 +170,7 @@ export default {
   justify-content: flex-start;
   border: none;
   background: white;
-  padding: 10px 0 33px 0;
+  padding: 10px 0 35px 0;
 }
 
 .towardsleft {
