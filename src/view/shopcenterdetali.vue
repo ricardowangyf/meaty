@@ -71,7 +71,7 @@ export default {
     //   const name = this.$route.params && this.$route.params.name;
     //   name &&
     //     details({ name }).then((data) => {
-    //       this.details = data.data;
+    //       this.details = data.data;Z
     //       console.log("this.details", data.data);
     //     });
     //   return this.detali
